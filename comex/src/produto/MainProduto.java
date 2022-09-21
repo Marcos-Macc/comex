@@ -18,7 +18,7 @@ public class MainProduto {
 		
 		System.out.println(p1.ImprimirInformacoes());
 		System.out.println(p2.ImprimirInformacoes());
-		System.out.println(p3.ImprimirInformacoes());
+		System.out.println(p3.ImprimirInformacoes()); 
 //		System.out.println(pi1.ImprimirInformacoes());
 	}
 }
