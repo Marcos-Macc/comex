@@ -4,6 +4,7 @@ public class Categoria {
 	private int id;
 	private String nome;
 	private StatusCategoria status;
+	private static int totalCategoria = 0;
 	 
 	public int getId() {
 		return id;
@@ -24,8 +25,9 @@ public class Categoria {
 		this.status = status;
 	}
 	
-	public Categoria(int id, String nome, StatusCategoria status) {
-		this.id = id;
+	public Categoria(String nome, StatusCategoria status) {
+		++totalCategoria;
+		this.id = totalCategoria;
 		this.nome = nome;
 		this.status = status;
 	}

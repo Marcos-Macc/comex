@@ -7,6 +7,7 @@ public class Produto {
 	private double precoUnitario;
 	private int qtdeEstoque;
 	private categoria.Categoria categoria;
+	private static int totalProduto = 0;
 	 
 	public int getId() {
 		return id;
@@ -45,13 +46,13 @@ public class Produto {
 		this.categoria = categoria;
 	}
 	
-	public Produto(int id,
-	String nome,
+	public Produto(String nome,
 	String descricao,
 	double precoUnitario,
 	int qtdeEstoque,
 	categoria.Categoria categoria) {
-		this.id = id;
+		++totalProduto;
+		this.id = totalProduto;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.precoUnitario = precoUnitario;
@@ -67,7 +68,7 @@ public class Produto {
 		return 0.4*this.precoUnitario;
 	}
 	
-	public String ImprimirInformacoes() {
+	public String imprimirInformacoes() {
 		return "O produto: "+this.nome.trim()+", da categoria "+this.categoria.getNome()+
 				", custa R$"+String.format("%.2f",this.precoUnitario)+" por unidade. Há ainda "+this.qtdeEstoque+" na loja."+
 				" Seu valor total em estoque é de R$"+String.format("%.2f",this.calculaValorTotalEstoque())+" e seu imposto é de R$"+String.format("%.2f",this.calculaValorImposto())+".";
