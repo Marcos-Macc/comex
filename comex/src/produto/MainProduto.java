@@ -15,7 +15,7 @@ public class MainProduto {
 		Produto p3 = new Produto(3, "Monitor Dell 27", "", 
 				1889.00, 3, cat1);
 //		ProdutoIsento pi1 = new ProdutoIsento(p2);
-		
+		 
 		System.out.println(p1.ImprimirInformacoes());
 		System.out.println(p2.ImprimirInformacoes());
 		System.out.println(p3.ImprimirInformacoes()); 

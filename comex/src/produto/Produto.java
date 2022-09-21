@@ -7,7 +7,7 @@ public class Produto {
 	private double precoUnitario;
 	private int qtdeEstoque;
 	private categoria.Categoria categoria;
-	
+	 
 	public int getId() {
 		return id;
 	}

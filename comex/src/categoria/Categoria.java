@@ -4,7 +4,7 @@ public class Categoria {
 	private int id;
 	private String nome;
 	private StatusCategoria status;
-	
+	 
 	public int getId() {
 		return id;
 	}
