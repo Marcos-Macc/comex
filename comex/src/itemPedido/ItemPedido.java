@@ -2,8 +2,9 @@ package itemPedido;
 
 import produto.Produto;
 import pedido.Pedido;
+import valoresProduto.IValoresProduto;
 
-public class ItemPedido {
+public class ItemPedido implements IValoresProduto {
 	private int id;
 	private double precoUnitario;
 	private int quantidade;
@@ -90,6 +91,11 @@ public class ItemPedido {
 				"\t Valor Total Sem Desconto: "+String.format("%.2f",this.precoTotalSemDesconto())+
 				"\t Desconto: "+this.calculaDesconto()*100+"%"+
 				"\t Valor Total Com Desconto: "+String.format("%.2f",this.precoTotalComDesconto());
+	}
+
+	@Override
+	public double getValorTotal() {
+		return precoTotalSemDesconto();
 	}
 
 	/*

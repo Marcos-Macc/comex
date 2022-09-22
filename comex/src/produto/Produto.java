@@ -1,11 +1,13 @@
 package produto;
 
-public class Produto {
+import valoresProduto.IValoresProduto;
+
+public class Produto implements IValoresProduto {
 	private int id;
 	private String nome;
 	private String descricao;
 	private double precoUnitario;
-	private int qtdeEstoque;
+	private int quantidade;
 	private categoria.Categoria categoria;
 	private static int totalProduto = 0;
 	 
@@ -33,11 +35,11 @@ public class Produto {
 	public void setPrecoUnitario(double precoUnitario) {
 		this.precoUnitario = precoUnitario;
 	}
-	public int getQtdeEstoque() {
-		return qtdeEstoque;
+	public int getQuantidade() {
+		return quantidade;
 	}
-	public void setQtdeEstoque(int qtdeEstoque) {
-		this.qtdeEstoque = qtdeEstoque;
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
 	}
 	public categoria.Categoria getCategoria() {
 		return categoria;
@@ -49,19 +51,19 @@ public class Produto {
 	public Produto(String nome,
 	String descricao,
 	double precoUnitario,
-	int qtdeEstoque,
+	int quantidade,
 	categoria.Categoria categoria) {
 		++totalProduto;
 		this.id = totalProduto;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.precoUnitario = precoUnitario;
-		this.qtdeEstoque = qtdeEstoque;
+		this.quantidade = quantidade;
 		this.categoria = categoria;
 	}
 	
 	public double calculaValorTotalEstoque() {
-		return this.qtdeEstoque*this.precoUnitario;
+		return this.quantidade*this.precoUnitario;
 	}
 	
 	public double calculaValorImposto() {
@@ -70,7 +72,11 @@ public class Produto {
 	
 	public String imprimirInformacoes() {
 		return "O produto: "+this.nome.trim()+", da categoria "+this.categoria.getNome()+
-				", custa R$"+String.format("%.2f",this.precoUnitario)+" por unidade. Há ainda "+this.qtdeEstoque+" na loja."+
+				", custa R$"+String.format("%.2f",this.precoUnitario)+" por unidade. Há ainda "+this.quantidade+" na loja."+
 				" Seu valor total em estoque é de R$"+String.format("%.2f",this.calculaValorTotalEstoque())+" e seu imposto é de R$"+String.format("%.2f",this.calculaValorImposto())+".";
+	}
+	@Override
+	public double getValorTotal() {
+		return calculaValorTotalEstoque();
 	}
 }

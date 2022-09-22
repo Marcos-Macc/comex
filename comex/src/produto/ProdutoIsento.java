@@ -11,7 +11,7 @@ public class ProdutoIsento extends Produto {
 	}
 	
 	public ProdutoIsento(Produto p) {
-		super(p.getNome(), p.getDescricao(),p.getPrecoUnitario(), p.getQtdeEstoque(), p.getCategoria());
+		super(p.getNome(), p.getDescricao(),p.getPrecoUnitario(), p.getQuantidade(), p.getCategoria());
 	}
  
 	public double calculaValorImposto() {
