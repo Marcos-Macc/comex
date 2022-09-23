@@ -5,9 +5,9 @@ import categoria.StatusCategoria;
 
 public class MainProduto {
 	public static void main(String[] args) {
-		Categoria cat1 = new Categoria("INFORMÁTICA", StatusCategoria.Ativa);
-		Categoria cat2 = new Categoria("MÓVEIS", StatusCategoria.Inativa);
-		Categoria cat3 = new Categoria("LIVROS", StatusCategoria.Ativa);
+		Categoria cat1 = new Categoria("INFORMÁTICA", StatusCategoria.ATIVA);
+		Categoria cat2 = new Categoria("MÓVEIS", StatusCategoria.INATIVA);
+		Categoria cat3 = new Categoria("LIVROS", StatusCategoria.ATIVA);
 		Produto p1 = new Produto("Notebook Samsung", "", 3523.00, 1, cat1);
 		Produto p2 = new ProdutoIsento("Clean Arquiteture", "", 102.90, 2, cat3);
 		Produto p3 = new Produto("Monitor Dell 27", "", 1889.00, 3, cat1);

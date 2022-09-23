@@ -2,9 +2,9 @@ package categoria;
 
 public class MainCategoria {
 	public static void main(String[] args) {
-		Categoria cat1 = new Categoria("INFORMÁTICA", StatusCategoria.Ativa);
-		Categoria cat2 = new Categoria("MÓVEIS", StatusCategoria.Inativa);
-		Categoria cat3 = new Categoria("LIVROS", StatusCategoria.Ativa);
+		Categoria cat1 = new Categoria("INFORMÁTICA", StatusCategoria.ATIVA);
+		Categoria cat2 = new Categoria("MÓVEIS", StatusCategoria.INATIVA);
+		Categoria cat3 = new Categoria("LIVROS", StatusCategoria.ATIVA);
 		 
 		System.out.println(cat1.imprimirInformacoes());
 		System.out.println(cat2.imprimirInformacoes());

@@ -68,7 +68,7 @@ public class ItemPedido implements IValoresProduto {
 
 	public double calculaDesconto() {
 		double desconto = 0.0;
-		if (this.tipoDesconto == tipoDescontoPedido.PROMOÇÃO)
+		if (this.tipoDesconto == tipoDescontoPedido.PROMOCAO)
 			desconto = 0.20;
 		else if (this.tipoDesconto == tipoDescontoPedido.QUANTIDADE)
 			if (this.quantidade > 10)

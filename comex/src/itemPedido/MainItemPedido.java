@@ -23,9 +23,9 @@ public class MainItemPedido {
 		Pedido pedido2 = new Pedido(Date.valueOf(LocalDate.now()), eli);
 		Pedido pedido3 = new Pedido(Date.valueOf(LocalDate.now()), gabi);
 
-		Categoria cat1 = new Categoria("INFORMÁTICA", StatusCategoria.Ativa);
-		Categoria cat2 = new Categoria("MÓVEIS", StatusCategoria.Inativa);
-		Categoria cat3 = new Categoria("LIVROS", StatusCategoria.Ativa);
+		Categoria cat1 = new Categoria("INFORMÁTICA", StatusCategoria.ATIVA);
+		Categoria cat2 = new Categoria("MÓVEIS", StatusCategoria.INATIVA);
+		Categoria cat3 = new Categoria("LIVROS", StatusCategoria.ATIVA);
 
 		Produto produto1 = new Produto("Notebook Samsung", "", 3523.00, 1, cat1);
 		Produto produto2 = new ProdutoIsento("Clean Arquiteture", "", 102.90, 2, cat3);
@@ -35,7 +35,7 @@ public class MainItemPedido {
 		ItemPedido itemPedido1 = new ItemPedido(11, produto2, pedido3, 0, tipoDescontoPedido.QUANTIDADE);
 		ItemPedido itemPedido2 = new ItemPedido(11, produto3, pedido2, 0, tipoDescontoPedido.NENHUM);
 		ItemPedido itemPedido3 = new ItemPedido(1, produto2, pedido3, 0, tipoDescontoPedido.QUANTIDADE);
-		ItemPedido itemPedido4 = new ItemPedido(11, produto1, pedido1, 0, tipoDescontoPedido.PROMOÇÃO);
+		ItemPedido itemPedido4 = new ItemPedido(11, produto1, pedido1, 0, tipoDescontoPedido.PROMOCAO);
 		
 		System.out.println(itemPedido1.imprimirInformacoes());
 		System.out.println(itemPedido2.imprimirInformacoes());
