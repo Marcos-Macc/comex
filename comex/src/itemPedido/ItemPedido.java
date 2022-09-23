@@ -68,15 +68,11 @@ public class ItemPedido implements IValoresProduto {
 
 	public double calculaDesconto() {
 		double desconto = 0.0;
-		if (this.tipoDesconto == tipoDescontoPedido.NENHUM)
-			desconto = 0.0;
-		else if (this.tipoDesconto == tipoDescontoPedido.PROMOÇÃO)
+		if (this.tipoDesconto == tipoDescontoPedido.PROMOÇÃO)
 			desconto = 0.20;
 		else if (this.tipoDesconto == tipoDescontoPedido.QUANTIDADE)
 			if (this.quantidade > 10)
 				desconto = 0.10;
-			else
-				desconto = 0.0;
 		return desconto;
 	}
 	
@@ -98,32 +94,4 @@ public class ItemPedido implements IValoresProduto {
 		return precoTotalSemDesconto();
 	}
 
-	/*
-	 * Cria uma classe `ItemPedido` com o seguinte conteúdo:
-	 * 
-	 * 
-	 * - **id**: númerico, chave primária, auto incrementado - **preço unitário:**
-	 * preço do produto na data da compra; - **quantidade:** quantidade comprada no
-	 * pedido; - **produto:** produto que foi comprado; - **pedido:** pedido do qual
-	 * este item faz parte; - **desconto:** bônus concedido, - **tipo de desconto:**
-	 * QUANTIDADE, PROMOCAO ou NENHUM.
-	 * 
-	 * Defina os _getters_ para todos os atributos.
-	 * 
-	 * Não defina _setters_. Receba os dados pelo construtor.
-	 * 
-	 * Defina também métodos que realizam as seguintes operações:
-	 * 
-	 * - **preco total sem descontos**: é o preço unitário do item do pedido
-	 * multiplicado pela quantidade 
-	 * - **calcula desconto**: 0 quando for nenhum, 20%
-	 * quando for promoção e 10% se a quantidade ultrapassar de 10 
-	 * - **preco total
-	 * com descontos**: subtrai o preço total dos descontos
-	 * 
-	 * Crie uma classe `MainItemPedido` e crie alguns pedidos e itens do pedido!
-	 * Defina outros objetos conforme for necessário.
-	 * 
-	 * Imprima as informações em um layout bacana!
-	 */
 }

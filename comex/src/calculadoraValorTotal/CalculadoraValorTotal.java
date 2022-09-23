@@ -18,17 +18,4 @@ public class CalculadoraValorTotal {
 		return vp.getClass().toString();
 	}
 	
-	
-	
-/*
- Tanto `Produto` como `ItemPedido` possuem atributos para o preço unitário e quantidade.
-
-Defina uma classe `CalculadoraValorTotal` com um método `calcula` que pode receber, 
-no mesmo métodos, tanto um `Produto` como um `ItemPedido` e retorna o resultad do seguinte 
-cálculo:
-
-- total = preço unitário x quantidade
-
-Crie uma classe `MainCalculadoraValorTotal`, definindo alguns produtos e itens do pedido e faça com que sejam impressos os valores totais!
- */
 }

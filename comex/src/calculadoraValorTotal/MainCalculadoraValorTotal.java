@@ -42,13 +42,13 @@ public class MainCalculadoraValorTotal {
 		CalculadoraValorTotal cvt = new CalculadoraValorTotal();
 		
 		System.out.println(cvt.calcula(produto1));
-		System.out.println(cvt.classe(produto1));
 		System.out.println(cvt.calcula(produto2));
 		System.out.println(cvt.calcula(produto3));
 		System.out.println(cvt.calcula(itemPedido1));
 		System.out.println(cvt.calcula(itemPedido2));
 		System.out.println(cvt.calcula(itemPedido3));
 		System.out.println(cvt.calcula(itemPedido4));
+		System.out.println(cvt.classe(produto1));
 		System.out.println(cvt.classe(itemPedido4));
 	}
 }

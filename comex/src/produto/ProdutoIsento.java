@@ -15,6 +15,6 @@ public class ProdutoIsento extends Produto {
 	}
  
 	public double calculaValorImposto() {
-		return 00;
+		return 0.0;
 	}
 }
