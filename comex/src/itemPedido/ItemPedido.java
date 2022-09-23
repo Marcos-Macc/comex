@@ -83,10 +83,10 @@ public class ItemPedido implements IValoresProduto {
 	public String imprimirInformacoes() {
 		return "-----\n"+"Cliente: "+this.getPedido().getCliente().getNome()+"\n"+
 				"Produto: "+this.getProduto().getNome()+"\n"+
-				"Quantidade: "+this.quantidade+"\t Valor Unid.: "+String.format("%.2f",this.precoUnitario)+
-				"\t Valor Total Sem Desconto: "+String.format("%.2f",this.precoTotalSemDesconto())+
+				"Quantidade: "+this.quantidade+"\t Valor Unid.: "+String.format("%,.2f",this.precoUnitario)+
+				"\t Valor Total Sem Desconto: "+String.format("%,.2f",this.precoTotalSemDesconto())+
 				"\t Desconto: "+this.calculaDesconto()*100+"%"+
-				"\t Valor Total Com Desconto: "+String.format("%.2f",this.precoTotalComDesconto());
+				"\t Valor Total Com Desconto: "+String.format("%,.2f",this.precoTotalComDesconto());
 	}
 
 	@Override

@@ -7,7 +7,7 @@ public class CalculadoraValorTotal {
 	private double valorTotal;
 	
 	public String imprimirInformacoes() {
-		return "Valor Total: "+String.format("%.2f",this.valorTotal);
+		return "Valor Total: "+String.format("%,.2f",this.valorTotal);
 	}
 	
 	public String calcula(IValoresProduto vp) {

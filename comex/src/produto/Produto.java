@@ -72,8 +72,8 @@ public class Produto implements IValoresProduto {
 	
 	public String imprimirInformacoes() {
 		return "O produto: "+this.nome.trim()+", da categoria "+this.categoria.getNome()+
-				", custa R$"+String.format("%.2f",this.precoUnitario)+" por unidade. Há ainda "+this.quantidade+" na loja."+
-				" Seu valor total em estoque é de R$"+String.format("%.2f",this.calculaValorTotalEstoque())+" e seu imposto é de R$"+String.format("%.2f",this.calculaValorImposto())+".";
+				", custa R$"+String.format("%,.2f",this.precoUnitario)+" por unidade. Há ainda "+this.quantidade+" na loja."+
+				" Seu valor total em estoque é de R$"+String.format("%,.2f",this.calculaValorTotalEstoque())+" e seu imposto é de R$"+String.format("%,.2f",this.calculaValorImposto())+".";
 	}
 	@Override
 	public double getValorTotal() {
