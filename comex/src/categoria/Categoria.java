@@ -3,7 +3,7 @@ package categoria;
 public class Categoria {
 	private int id;
 	private String nome;
-	private StatusCategoria status;
+	private StatusCategoria status = StatusCategoria.ATIVA;
 	private static int totalCategoria = 0;
 	 
 	public int getId() {
@@ -27,6 +27,15 @@ public class Categoria {
 	
 	public Categoria(String nome, StatusCategoria status) {
 		++totalCategoria;
+		if (totalCategoria < 1 ) {
+			throw new IllegalArgumentException("ID inválido. Deve ser Maior que 0.");
+		}
+		if (nome.length() < 3 ) {
+			throw new IllegalArgumentException("Nome inválido. Deve ter mais que 3 caracteres.");
+		}
+		if (status != StatusCategoria.ATIVA && status != StatusCategoria.INATIVA ) {
+			throw new IllegalArgumentException("Status inválido. Deve ser StatusCategoria.ATIVA ou StatusCategoria.INATIVA.");
+		}
 		this.id = totalCategoria;
 		this.nome = nome;
 		this.status = status;
