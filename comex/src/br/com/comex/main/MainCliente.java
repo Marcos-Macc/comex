@@ -9,7 +9,7 @@ public class MainCliente {
 		Cliente eli = new Cliente("Elisa Beatriz", "45645645689", "55 5555-5555", "Av Batata", "5x", " bl 1", "Camões", "Cozido", "PN");
 		Cliente gabi = new Cliente("Gabriela Duarte", "45645645689", "11 99999-9999", "Av Batatão", "777", "", "Lima", "Assado", "CH");
 		try {
-			Cliente teste = new Cliente("Gabriela Duarte", "45645645689", "telefone9AB", "rua123", "1", "", "B", "C", "PR");
+			Cliente teste = new Cliente("Gabriela Duarte", "45645645689", "telefone9AB", "rua123", "1", "", "B", "C", "PRE");
 			Cliente teste1 = new Cliente("Gabriela Duarte", "CPF", "telefone", "rua", "    ", "", "bairro", "cidade", "estado");
 		}catch (Exception e){
 			System.out.println("Erro: "+e.getMessage());

@@ -15,5 +15,9 @@ Adicionado Exceções `IllegalArgumentException` às classes Produto e ProdutoIs
 Criado pacote br.com.comex.main, que contem as classes que definem o método `main`.
 Criado pacote br.com.comex.modelo, que contem as classes `Categoria`, `Produto`, `ProdutoIsento`, `Cliente`, `Pedido` e `ItemPedido`.
 
-<h2>28/09/2022 - Validações ao criar um Cliente<h2>
+<h2>28/09/2022 - Validações ao criar um Cliente</h2>
 Adicionado Exceções `IllegalArgumentException` à classe Cliente.
+
+<h2>28/09/2022 - Definindo a ComexException</h2>
+Definida uma "unchecked exception" chamada `ComexException`.
+Utilizada no lugar de `IllegalArgumentException` na classe Cliente.
