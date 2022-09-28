@@ -1,18 +1,18 @@
-package calculadoraValorTotal;
+package br.com.comex.main;
 
 import java.sql.Date;
 import java.time.LocalDate;
 
-import categoria.Categoria;
-import categoria.StatusCategoria;
-import cliente.Cliente;
-import itemPedido.ItemPedido;
-import itemPedido.tipoDescontoPedido;
-import pedido.Pedido;
-import produto.Produto;
-import produto.ProdutoIsento;
+import br.com.comex.modelo.Categoria;
+import br.com.comex.modelo.Cliente;
+import br.com.comex.modelo.ItemPedido;
+import br.com.comex.modelo.Pedido;
+import br.com.comex.modelo.Produto;
+import br.com.comex.modelo.ProdutoIsento;
+import br.com.comex.modelo.StatusCategoria;
+import br.com.comex.modelo.tipoDescontoPedido;
 
-public class MainCalculadoraValorTotal {
+public class MainItemPedido {
 	public static void main(String[] args) {
 		Cliente ana = new Cliente("Anna Paula", "123.123.123-89", "(56)99987-1234", "Av Batatinha", "123A", "",
 				"bairro", "Conserva", "Pote");
@@ -39,16 +39,9 @@ public class MainCalculadoraValorTotal {
 		ItemPedido itemPedido3 = new ItemPedido(1, produto2, pedido3, 0, tipoDescontoPedido.QUANTIDADE);
 		ItemPedido itemPedido4 = new ItemPedido(11, produto1, pedido1, 0, tipoDescontoPedido.PROMOCAO);
 		
-		CalculadoraValorTotal cvt = new CalculadoraValorTotal();
-		
-		System.out.println(cvt.calcula(produto1));
-		System.out.println(cvt.calcula(produto2));
-		System.out.println(cvt.calcula(produto3));
-		System.out.println(cvt.calcula(itemPedido1));
-		System.out.println(cvt.calcula(itemPedido2));
-		System.out.println(cvt.calcula(itemPedido3));
-		System.out.println(cvt.calcula(itemPedido4));
-		System.out.println(cvt.classe(produto1));
-		System.out.println(cvt.classe(itemPedido4));
+		System.out.println(itemPedido1.imprimirInformacoes());
+		System.out.println(itemPedido2.imprimirInformacoes());
+		System.out.println(itemPedido3.imprimirInformacoes());
+		System.out.println(itemPedido4.imprimirInformacoes());
 	}
 }

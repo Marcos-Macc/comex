@@ -1,9 +1,11 @@
-package pedido;
+package br.com.comex.main;
 
 import java.time.LocalDate;
-import java.sql.Date;
 
-import cliente.Cliente;
+import br.com.comex.modelo.Cliente;
+import br.com.comex.modelo.Pedido;
+
+import java.sql.Date;
 
 public class MainPedido {
 	public static void main(String[] args) {

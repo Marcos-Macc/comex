@@ -1,4 +1,4 @@
-package cliente;
+package br.com.comex.modelo;
 
 public class Cliente {
 	private int id;

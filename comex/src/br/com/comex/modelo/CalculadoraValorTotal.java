@@ -1,6 +1,4 @@
-package calculadoraValorTotal;
-
-import valoresProduto.IValoresProduto;
+package br.com.comex.modelo;
 
 public class CalculadoraValorTotal {
 	

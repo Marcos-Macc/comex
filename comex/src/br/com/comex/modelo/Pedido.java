@@ -1,9 +1,7 @@
-package pedido;
+package br.com.comex.modelo;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-
-import cliente.Cliente;
 
 public class Pedido {
 	private int id;

@@ -1,4 +1,4 @@
-package categoria;
+package br.com.comex.modelo;
 
 public enum StatusCategoria {
 	ATIVA, INATIVA;

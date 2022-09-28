@@ -10,3 +10,7 @@ Adicionado Exceções `IllegalArgumentException` à classe Categoria.
 
 <h2>28/09/2022 - Validações ao criar um Produto ou ProdutoIsento</h2>
 Adicionado Exceções `IllegalArgumentException` às classes Produto e ProdutoIsento.
+
+<h2>28/09/2022 - Adequando pacotes</h2>
+Criado pacote br.com.comex.main, que contem as classes que definem o método `main`.
+Criado pacote br.com.comex.modelo, que contem as classes `Categoria`, `Produto`, `ProdutoIsento`, `Cliente`, `Pedido` e `ItemPedido`.

@@ -1,4 +1,6 @@
-package cliente;
+package br.com.comex.main;
+
+import br.com.comex.modelo.Cliente;
 
 public class MainCliente {
 	public static void main(String[] args) {

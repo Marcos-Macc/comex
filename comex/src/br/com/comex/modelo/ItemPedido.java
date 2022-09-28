@@ -1,8 +1,4 @@
-package itemPedido;
-
-import produto.Produto;
-import pedido.Pedido;
-import valoresProduto.IValoresProduto;
+package br.com.comex.modelo;
 
 public class ItemPedido implements IValoresProduto {
 	private int id;

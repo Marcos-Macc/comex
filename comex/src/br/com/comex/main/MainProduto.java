@@ -1,7 +1,9 @@
-package produto;
+package br.com.comex.main;
 
-import categoria.Categoria;
-import categoria.StatusCategoria;
+import br.com.comex.modelo.Categoria;
+import br.com.comex.modelo.Produto;
+import br.com.comex.modelo.ProdutoIsento;
+import br.com.comex.modelo.StatusCategoria;
 
 public class MainProduto {
 	public static void main(String[] args) {

@@ -1,6 +1,4 @@
-package produto;
-
-import categoria.Categoria;
+package br.com.comex.modelo;
 
 public class ProdutoIsento extends Produto {
 	

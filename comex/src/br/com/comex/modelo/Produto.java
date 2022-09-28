@@ -1,6 +1,4 @@
-package produto;
-
-import valoresProduto.IValoresProduto;
+package br.com.comex.modelo;
 
 public class Produto implements IValoresProduto {
 	private int id;
@@ -8,7 +6,7 @@ public class Produto implements IValoresProduto {
 	private String descricao;
 	private double precoUnitario = 0.0;
 	private int quantidade;
-	private categoria.Categoria categoria;
+	private br.com.comex.modelo.Categoria categoria;
 	private static int totalProduto = 0;
 	 
 	public int getId() {
@@ -41,10 +39,10 @@ public class Produto implements IValoresProduto {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	public categoria.Categoria getCategoria() {
+	public br.com.comex.modelo.Categoria getCategoria() {
 		return categoria;
 	}
-	public void setCategoria(categoria.Categoria categoria) {
+	public void setCategoria(br.com.comex.modelo.Categoria categoria) {
 		this.categoria = categoria;
 	}
 	
@@ -52,7 +50,7 @@ public class Produto implements IValoresProduto {
 	String descricao,
 	double precoUnitario,
 	int quantidade,
-	categoria.Categoria categoria) {
+	br.com.comex.modelo.Categoria categoria) {
 		++totalProduto;
 		if (totalProduto<0) {
 			throw new IllegalArgumentException("ID deve ser maior que 0.");
