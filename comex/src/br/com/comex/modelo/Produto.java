@@ -58,7 +58,7 @@ public class Produto implements IValoresProduto {
 		if ((nome==null)) {
 			throw new IllegalArgumentException("Nome é obrigatório!");
 		}
-		if ((nome.length()<=5)) {
+		if ((nome.trim().length()<=5)) {
 			throw new IllegalArgumentException("Nome deve ter mais de 5 caracteres.");
 		}
 		if (precoUnitario<=0) {

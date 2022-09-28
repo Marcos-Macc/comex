@@ -33,7 +33,7 @@ public class Categoria {
 		if (nome == null) {
 			throw new IllegalArgumentException("Nome da Categoria é obrigatório.");
 		}
-		if (nome.length() <= 3 ) {
+		if (nome.trim().length() <= 3 ) {
 			throw new IllegalArgumentException("Nome inválido. Deve ter mais que 3 caracteres.");
 		}
 		if (status != StatusCategoria.ATIVA && status != StatusCategoria.INATIVA ) {
