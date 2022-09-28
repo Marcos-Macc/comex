@@ -7,3 +7,6 @@ Adicionado novos packages categoria e produto no projeto
 
 <h2>28/09/2022 - Validações ao criar uma Categoria</h2>
 Adicionado Exceções `IllegalArgumentException` à classe Categoria.
+
+<h2>28/09/2022 - Validações ao criar um Produto ou ProdutoIsento</h2>
+Adicionado Exceções `IllegalArgumentException` às classes Produto e ProdutoIsento.

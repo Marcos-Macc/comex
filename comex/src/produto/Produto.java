@@ -6,7 +6,7 @@ public class Produto implements IValoresProduto {
 	private int id;
 	private String nome;
 	private String descricao;
-	private double precoUnitario;
+	private double precoUnitario = 0.0;
 	private int quantidade;
 	private categoria.Categoria categoria;
 	private static int totalProduto = 0;
@@ -54,12 +54,31 @@ public class Produto implements IValoresProduto {
 	int quantidade,
 	categoria.Categoria categoria) {
 		++totalProduto;
+		if (totalProduto<0) {
+			throw new IllegalArgumentException("ID deve ser maior que 0.");
+		}
+		if ((nome==null)) {
+			throw new IllegalArgumentException("Nome é obrigatório!");
+		}
+		if ((nome.length()<=5)) {
+			throw new IllegalArgumentException("Nome deve ter mais de 5 caracteres.");
+		}
+		if (precoUnitario<=0) {
+			throw new IllegalArgumentException("Preço Unitário é obrigatório e deve ser maior que 0.");
+		}
+		if (quantidade<=0) {
+			throw new IllegalArgumentException("Quantidade é obrigatória e deve ser maior que 0.");
+		}
+		if (categoria==null) {
+			throw new IllegalArgumentException("Categoria é obrigatória.");
+		}
 		this.id = totalProduto;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.precoUnitario = precoUnitario;
 		this.quantidade = quantidade;
 		this.categoria = categoria;
+		
 	}
 	
 	public double calculaValorTotalEstoque() {
