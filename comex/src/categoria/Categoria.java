@@ -30,6 +30,9 @@ public class Categoria {
 		if (totalCategoria < 1 ) {
 			throw new IllegalArgumentException("ID inválido. Deve ser Maior que 0.");
 		}
+		if (nome == null) {
+			throw new IllegalArgumentException("Nome da Categoria é obrigatório.");
+		}
 		if (nome.length() < 3 ) {
 			throw new IllegalArgumentException("Nome inválido. Deve ter mais que 3 caracteres.");
 		}
