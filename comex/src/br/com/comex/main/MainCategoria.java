@@ -9,7 +9,7 @@ public class MainCategoria {
 		Categoria cat2 = new Categoria("MÓVEIS", StatusCategoria.INATIVA);
 		Categoria cat3 = new Categoria("LIVROS", StatusCategoria.ATIVA);
 		try {
-			Categoria cat4 = new Categoria("L", StatusCategoria.ATIVA);
+			Categoria cat4 = new Categoria("LIVROS", StatusCategoria.ATIVA);
 		}catch (Exception e) {
 			System.out.println("Erro: "+e.getMessage());
 		}

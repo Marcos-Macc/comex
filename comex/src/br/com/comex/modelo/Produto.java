@@ -61,6 +61,9 @@ public class Produto implements IValoresProduto {
 		if ((nome.trim().length()<=5)) {
 			throw new IllegalArgumentException("Nome deve ter mais de 5 caracteres.");
 		}
+		if (Character.isDigit(nome.charAt(0)) ) {
+			throw new IllegalArgumentException("Nome: "+nome+" não pode começar com um número.");
+		}
 		if (precoUnitario<=0) {
 			throw new IllegalArgumentException("Preço Unitário é obrigatório e deve ser maior que 0.");
 		}

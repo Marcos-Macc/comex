@@ -36,6 +36,9 @@ public class Categoria {
 		if (nome.trim().length() <= 3 ) {
 			throw new IllegalArgumentException("Nome inválido. Deve ter mais que 3 caracteres.");
 		}
+		if (Character.isDigit(nome.charAt(0)) ) {
+			throw new IllegalArgumentException("Nome: "+nome+" não pode começar com um número.");
+		}
 		if (status != StatusCategoria.ATIVA && status != StatusCategoria.INATIVA ) {
 			throw new IllegalArgumentException("Status inválido. Deve ser StatusCategoria.ATIVA ou StatusCategoria.INATIVA.");
 		}

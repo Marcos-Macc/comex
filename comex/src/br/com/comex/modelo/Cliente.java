@@ -63,12 +63,25 @@ public class Cliente {
 		if (nome.trim().length()<6) {
 			throw new ComexException("Nome do Cliente deve conter mais de 5 caracteres.");
 		}
+		if (Character.isDigit(nome.charAt(0)) ) {
+			throw new ComexException("Nome: "+nome+" não pode começar com um número.");
+		}
 		if (cpf == null || (cpf.trim().length()<11 || cpf.trim().length() >14)) {
 			throw new ComexException("CPF do Cliente é obrigatório e deve conter entre 11 a 14 caracteres.");
+		}
+		if(!cpf.substring(0, 3).matches("[0-9]*")||!(cpf.substring(3,4).equals("."))||
+				!cpf.substring(4, 7).matches("[0-9]*")||!(cpf.substring(7,8).equals("."))||
+				!cpf.substring(8, 11).matches("[0-9]*")||!(cpf.substring(11,12).equals("-"))||
+				!cpf.substring(12, 14).matches("[0-9]*")){
+			throw new ComexException("CPF deve ser escrito em formato 'xxx.xxx.xxx-xx'.");
 		}
 		if (telefone != null && telefone.trim().length()<11 || telefone.trim().length()>16) {
 			throw new ComexException("Telefone do Cliente é obrigatório e deve conter entre 11 a 16 caracteres.");
 		}
+		if(telefone != null && !telefone.matches("^([0-9]{2}) [0-9]{1} ([0-9]{4}-[0-9]{4})$")) {
+			throw new ComexException(telefone.trim() +"Telefone deve ser escrito no formato '(xx) x xxxx-xxxx'.");
+		}
+			
 		if (rua==null || rua.trim().length()<6) {
 			throw new ComexException("Rua é campo obrigatório e deve conter mais de 5 caracteres.");
 		}
@@ -87,14 +100,14 @@ public class Cliente {
 		}	
 		
 		this.id = totalCliente;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.telefone = telefone;
-		this.rua = rua;
-		this.numero = numero;
-		this.complemento = complemento;
-		this.bairro = bairro;
-		this.cidade = cidade;
+		this.nome = nome.trim();
+		this.cpf = cpf.trim();
+		this.telefone = telefone.trim();
+		this.rua = rua.trim();
+		this.numero = numero.trim();
+		this.complemento = complemento.trim();
+		this.bairro = bairro.trim();
+		this.cidade = cidade.trim();
 		this.estado = estado;
 	}
 	
