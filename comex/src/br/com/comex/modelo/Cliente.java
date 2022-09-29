@@ -103,5 +103,11 @@ public class Cliente {
 				", endereço: "+this.rua+", "+this.numero+" "+this.complemento+" - "+this.bairro+
 				", "+this.cidade+"/"+this.estado;
 	}
+	
+	@Override
+	public String toString() {
+		return imprimirInformacoes();
+	}
+	
 
 }

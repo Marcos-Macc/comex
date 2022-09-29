@@ -89,5 +89,10 @@ public class ItemPedido implements IValoresProduto {
 	public double getValorTotal() {
 		return precoTotalSemDesconto();
 	}
+	
+	@Override
+	public String toString() {
+		return imprimirInformacoes();
+	}
 
 }

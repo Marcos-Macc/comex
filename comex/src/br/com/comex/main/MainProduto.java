@@ -39,5 +39,10 @@ public class MainProduto {
 		System.out.println(p2.imprimirInformacoes());
 		System.out.println(p3.imprimirInformacoes());
 //		System.out.println(pi1.ImprimirInformacoes());
+		System.out.println("----------------------");
+		System.out.println(p1.toString());
+		System.out.println(p2.toString());
+		System.out.println(p3.toString());
+//		System.out.println(pi1.ImprimirInformacoes());
 	}
 }

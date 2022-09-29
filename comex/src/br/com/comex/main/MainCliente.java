@@ -17,5 +17,9 @@ public class MainCliente {
 		System.out.println("(Sem LGPD) São as informações de "+ana.getNome()+"-> "+ana.imprimirInformacoes());
 		System.out.println("(Sem LGPD) São as informações de "+eli.getNome()+"-> "+eli.imprimirInformacoes());
 		System.out.println("(Sem LGPD) São as informações de "+gabi.getNome()+"-> "+gabi.imprimirInformacoes());
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("(Sem LGPD) São as informações de "+ana.getNome()+"-> "+ana.toString());
+		System.out.println("(Sem LGPD) São as informações de "+eli.getNome()+"-> "+eli.toString());
+		System.out.println("(Sem LGPD) São as informações de "+gabi.getNome()+"-> "+gabi.toString());
 	}
 }

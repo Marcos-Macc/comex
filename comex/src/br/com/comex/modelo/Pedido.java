@@ -33,4 +33,9 @@ public class Pedido {
 		return "Pedido nº: "+this.id+" feito dia "+f.format(this.data)+" por "+this.cliente.getNome()+".";
 	}
 	
+	@Override
+	public String toString() {
+		return imprimirInformacoes();
+	}
+	
 }

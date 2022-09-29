@@ -48,5 +48,10 @@ public class Categoria {
 		return "Categoria " + this.nome.trim() + " (" + this.id +
 				" - " + this.status+ ")";
 	}
+	
+	@Override
+	public String toString() {
+		return imprimirInformacoes();
+	}
 
 }

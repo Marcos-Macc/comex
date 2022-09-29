@@ -21,3 +21,6 @@ Adicionado Exceções `IllegalArgumentException` à classe Cliente.
 <h2>28/09/2022 - Definindo a ComexException</h2>
 Definida uma "unchecked exception" chamada `ComexException`.
 Utilizada no lugar de `IllegalArgumentException` na classe Cliente.
+
+<h2>29/09/2022 - Definindo toString()</h2>
+Definido método toString() para todas as classes.

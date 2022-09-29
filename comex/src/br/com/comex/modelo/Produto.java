@@ -96,4 +96,9 @@ public class Produto implements IValoresProduto {
 	public double getValorTotal() {
 		return calculaValorTotalEstoque();
 	}
+	
+	@Override
+	public String toString() {
+		return imprimirInformacoes();
+	}
 }
