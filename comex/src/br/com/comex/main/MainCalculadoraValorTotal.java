@@ -12,15 +12,16 @@ import br.com.comex.modelo.Produto;
 import br.com.comex.modelo.ProdutoIsento;
 import br.com.comex.modelo.StatusCategoria;
 import br.com.comex.modelo.tipoDescontoPedido;
+import br.com.comex.modelo.siglaEstado;
 
 public class MainCalculadoraValorTotal {
 	public static void main(String[] args) {
 		Cliente ana = new Cliente("Anna Paula", "123.123.123-89", "(56)99987-1234", "Av Batatinha", "123A", "",
-				"bairro", "Conserva", "Pote");
+				"bairro", "Conserva", siglaEstado.PA);
 		Cliente eli = new Cliente("Elisa Beatriz", "45645645689", "5555-5555", "Av Batata", "5x", " bl 1", "Camões",
-				"Cozido", "PN");
+				"Cozido", siglaEstado.PA);
 		Cliente gabi = new Cliente("Gabriela Duarte", "789.789.789.89", "11 99999-9999", "Av Batatão", "777", "",
-				"Lima", "Assado", "CH");
+				"Lima", "Assado", siglaEstado.PA);
 
 		Pedido pedido1 = new Pedido(Date.valueOf(LocalDate.now()), ana);
 		Pedido pedido2 = new Pedido(Date.valueOf(LocalDate.now()), eli);

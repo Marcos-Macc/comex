@@ -10,7 +10,7 @@ public class Cliente {
 	private String complemento;
 	private String bairro;
 	private String cidade;
-	private String estado;
+	private siglaEstado estado;
 	private static int totalCliente = 0;
 	
 	public int getId() {
@@ -40,7 +40,7 @@ public class Cliente {
 	public String getCidade() {
 		return cidade;
 	}
-	public String getEstado() {
+	public siglaEstado getEstado() {
 		return estado;
 	}
 	
@@ -52,7 +52,7 @@ public class Cliente {
 	String complemento,
 	String bairro,	
 	String cidade,
-	String estado) {
+	siglaEstado estado) {
 		++totalCliente;
 		if (totalCliente<0) {
 			throw new ComexException("ID do Cliente deve ser maior que 0.");
@@ -78,7 +78,7 @@ public class Cliente {
 		if (telefone != null && telefone.trim().length()<11 || telefone.trim().length()>16) {
 			throw new ComexException("Telefone do Cliente é obrigatório e deve conter entre 11 a 16 caracteres.");
 		}
-		if(telefone != null && !telefone.matches("^([0-9]{2}) [0-9]{1} ([0-9]{4}-[0-9]{4})$")) {
+		if(telefone != null && !telefone.matches("^\\([0-9]{2}\\) [0-9]{1} ([0-9]{4}-[0-9]{4})$")) {
 			throw new ComexException(telefone.trim() +"Telefone deve ser escrito no formato '(xx) x xxxx-xxxx'.");
 		}
 			
@@ -94,7 +94,7 @@ public class Cliente {
 		if (cidade==null || cidade.trim().length()<1) {
 			throw new ComexException("Cidade é campo obrigatório e deve conter mais de 1 caracter.");
 		}
-		if (estado==null||estado.trim().length()!=2) {
+		if (estado==null) {
 			//throw new IllegalArgumentException("Estado é campo obrigatório e deve conter exatamente 2 caracteres.");
 			throw new ComexException("Estado é campo obrigatório e deve conter exatamente 2 caracteres.");
 		}	

@@ -39,7 +39,7 @@ public class Categoria {
 		if (Character.isDigit(nome.charAt(0)) ) {
 			throw new IllegalArgumentException("Nome: "+nome+" não pode começar com um número.");
 		}
-		if (status != StatusCategoria.ATIVA && status != StatusCategoria.INATIVA ) {
+		if (status==null ) {
 			throw new IllegalArgumentException("Status inválido. Deve ser StatusCategoria.ATIVA ou StatusCategoria.INATIVA.");
 		}
 		this.id = totalCategoria;
