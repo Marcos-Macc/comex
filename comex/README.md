@@ -43,3 +43,8 @@ Cliente - <b>telefone</b> se tiver preenchido, só pode conter números, espaço
 Categoria - O status da categoria só possa ser <b>ATIVA</b> e <b>INATIVA</b>.
 
 Cliente - O estado do cliente só possa ser: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO.
+
+<h2>05/10/2022 - Leitura do arquivo pedidos.csv</h2>
+Criação do pacote <b>br.com.bomex.csv</b>.
+Criação das classes LeitorPedidosCsv e PedidoCsv.
+Importação do arquivo pedidos.csv.
