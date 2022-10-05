@@ -54,3 +54,6 @@ Criado classe <b>TotalProdutosVendidos</b>.
 
 <h2>05/10/2022 - Calcular total de categorias distintas do pedidos.csv</h2>
 Criado Classe <b>TotalCategorias</b>.
+
+<h2>05/10/2022 - Montante total de vendas do pedidos.csv</h2>
+Criado Classe <b>MontanteTotalVendas</b>
