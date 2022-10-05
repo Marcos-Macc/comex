@@ -14,14 +14,5 @@ public class TotalProdutosVendidos {
 		System.out.println("Total de produtos vendidos: "+totalProdutosVendidos);
 		
 	}
-	/*
-	 Crie uma classe `TotalProdutosVendidos` que calcula, a partir da `List<PedidoCsv>` criada a 
-	 partir do arquivo `pedidos.csv`, a soma das quantidades de produtos vendidos.
 
-Imprima o total de produtos vendidos da seguinte forma:
-
-```
-Total de produtos vendidos: 35
-```
-	 */
 }
