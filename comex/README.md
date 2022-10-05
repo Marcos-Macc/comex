@@ -48,3 +48,7 @@ Cliente - O estado do cliente só possa ser: AC, AL, AP, AM, BA, CE, DF, ES, GO,
 Criação do pacote <b>br.com.bomex.csv</b>.
 Criação das classes LeitorPedidosCsv e PedidoCsv.
 Importação do arquivo pedidos.csv.
+
+<h2>05/10/2022 - Calcular o total de produtos vendidos do pedidos.csv</h2>
+Criado classe TotalProdutosVendidos.
+
