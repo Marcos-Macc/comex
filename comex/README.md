@@ -57,3 +57,6 @@ Criado Classe <b>TotalCategorias</b>.
 
 <h2>05/10/2022 - Montante total de vendas do pedidos.csv</h2>
 Criado Classe <b>MontanteTotalVendas</b>
+
+<h2>06/10/2022 - Pedidos mais barato e mais caro do pedidos.csv</h2>
+Criado classe <b>PedidoMaisBaratoEMaisCaro</b>

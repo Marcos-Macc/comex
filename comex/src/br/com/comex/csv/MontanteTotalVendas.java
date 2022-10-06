@@ -17,8 +17,8 @@ public class MontanteTotalVendas {
 		for (PedidoCsv pedidoCsv : listaPedido) {
 			totalMontanteVendas+=(Double.parseDouble(pedidoCsv.getQuantidade())*Double.parseDouble(pedidoCsv.getPreco()));
 		}
-		System.out.println("Montante de vendas: "+totalMontanteVendas);
+		System.out.println("Montante de vendas: R$"+String.format("%,.2f",totalMontanteVendas));
 
-
+		
 	}
 }
