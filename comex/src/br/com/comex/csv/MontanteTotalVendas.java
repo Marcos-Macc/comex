@@ -1,6 +1,7 @@
 package br.com.comex.csv;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.List;
 
 public class MontanteTotalVendas {
@@ -17,7 +18,7 @@ public class MontanteTotalVendas {
 		for (PedidoCsv pedidoCsv : listaPedido) {
 			totalMontanteVendas+=(Double.parseDouble(pedidoCsv.getQuantidade())*Double.parseDouble(pedidoCsv.getPreco()));
 		}
-		System.out.println("Montante de vendas: R$"+String.format("%,.2f",totalMontanteVendas));
+		System.out.println("Montante de vendas: "+NumberFormat.getCurrencyInstance().format(totalMontanteVendas));
 
 		
 	}

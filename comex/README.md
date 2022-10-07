@@ -60,3 +60,6 @@ Criado Classe <b>MontanteTotalVendas</b>
 
 <h2>06/10/2022 - Pedidos mais barato e mais caro do pedidos.csv</h2>
 Criado classe <b>PedidoMaisBaratoEMaisCaro</b>
+
+<h2>06/10/2022 - Formatação de Moedas</h2>
+Atualizado classes PedidoMaisBaratoEMaisCaro e MontanteTotalVendas para mostrar os valores corretamente e em moeda Brasileira.
