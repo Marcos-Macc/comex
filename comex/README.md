@@ -63,3 +63,9 @@ Criado classe <b>PedidoMaisBaratoEMaisCaro</b>
 
 <h2>06/10/2022 - Formatação de Moedas</h2>
 Atualizado classes PedidoMaisBaratoEMaisCaro e MontanteTotalVendas para mostrar os valores corretamente e em moeda Brasileira.
+
+>>>BRX Semana 9 - JDBC e Design Patterns (10/10 - 15/10)
+
+<h2>10/10/2022 - Criando a ConnectionFactory</h2>
+Criado br.com.comex.modelo.ConnectionFactory
+Criado br.com.comex.main.MainTestaConexao
