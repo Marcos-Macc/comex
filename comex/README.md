@@ -67,5 +67,9 @@ Atualizado classes PedidoMaisBaratoEMaisCaro e MontanteTotalVendas para mostrar 
 >>>BRX Semana 9 - JDBC e Design Patterns (10/10 - 15/10)
 
 <h2>10/10/2022 - Criando a ConnectionFactory</h2>
-Criado br.com.comex.modelo.ConnectionFactory
-Criado br.com.comex.main.MainTestaConexao
+Criado br.com.comex.modelo.ConnectionFactory.
+Criado br.com.comex.main.MainTestaConexao.
+
+<h2>10/10/2022 - Inserção de Categorias</h2>
+Atualizado br.com.comex.modelo.ConnectionFactory e br.com.comex.main.MainTestaConexao.
+Criado br.com.comex.main.MainInsercaoCategoria.
