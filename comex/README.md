@@ -73,3 +73,8 @@ Criado br.com.comex.main.MainTestaConexao.
 <h2>10/10/2022 - Inserção de Categorias</h2>
 Atualizado br.com.comex.modelo.ConnectionFactory e br.com.comex.main.MainTestaConexao.
 Criado br.com.comex.main.MainInsercaoCategoria.
+
+<h2>10/10/2022 - Listagem de Categorias</h2>
+Atualizado br.com.comex.main.MainInsercaoCategoria para utilizar preparedStatement.
+Criado br.com.comex.main.MainListagemCategoria.
+Atualizado br.com.comex.modelo com um construtor sem parâmetros.

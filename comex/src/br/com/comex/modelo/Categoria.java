@@ -25,6 +25,10 @@ public class Categoria {
 		this.status = status;
 	}
 	
+	public Categoria() {
+		
+	}
+	
 	public Categoria(String nome, StatusCategoria status) {
 		++totalCategoria;
 		if (totalCategoria < 1 ) {
