@@ -78,3 +78,6 @@ Criado br.com.comex.main.MainInsercaoCategoria.
 Atualizado br.com.comex.main.MainInsercaoCategoria para utilizar preparedStatement.
 Criado br.com.comex.main.MainListagemCategoria.
 Atualizado br.com.comex.modelo com um construtor sem parâmetros.
+
+<h2>10/10/2022 - Atualização de Categorias</h2>
+Criado br.com.comex.main.MainAtualizacaoCategoria.
