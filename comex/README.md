@@ -81,3 +81,6 @@ Atualizado br.com.comex.modelo com um construtor sem parâmetros.
 
 <h2>10/10/2022 - Atualização de Categorias</h2>
 Criado br.com.comex.main.MainAtualizacaoCategoria.
+
+<h2>11/10/2022 - Pool de conexões</h2>
+Atualizado br.com.comex.modelo.ConnectionFactory para ter um pool de conexões.
