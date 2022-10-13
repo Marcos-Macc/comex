@@ -13,6 +13,34 @@ public class ItemPedido implements IValoresProduto {
 	public int getId() {
 		return id;
 	}
+	
+	public void setPrecoUnitario(double precoUnitario) {
+		this.precoUnitario = precoUnitario;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+
+	public void setDesconto(double desconto) {
+		this.desconto = desconto;
+	}
+
+	public void setTipoDesconto(tipoDescontoPedido tipoDesconto) {
+		this.tipoDesconto = tipoDesconto;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public double getPrecoUnitario() {
 		return precoUnitario;
@@ -42,6 +70,25 @@ public class ItemPedido implements IValoresProduto {
 			tipoDescontoPedido tipoDesconto) {
 		++totalItemPedido;
 		this.id = totalItemPedido;
+		this.precoUnitario = produto.getPrecoUnitario();
+		this.quantidade = quantidade;
+		this.produto = produto;
+		this.pedido = pedido;
+		if (desconto > 100.0)
+			this.desconto = desconto;
+		else if (desconto < 0.0)
+			this.desconto = 0.0;
+		else
+			this.desconto = desconto;
+		if (tipoDesconto == null)
+			this.tipoDesconto = tipoDescontoPedido.NENHUM;
+		else
+			this.tipoDesconto = tipoDesconto;
+	}
+	
+	public ItemPedido(int id, int quantidade, Produto produto, Pedido pedido, double desconto,
+			tipoDescontoPedido tipoDesconto) {
+		this.id = id;
 		this.precoUnitario = produto.getPrecoUnitario();
 		this.quantidade = quantidade;
 		this.produto = produto;

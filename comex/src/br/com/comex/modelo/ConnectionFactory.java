@@ -30,7 +30,11 @@ public class ConnectionFactory {
 		//return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1522:xe", "SYSTEM", "admin");
 	}
 
-	public void fechaConexao(Connection con) throws SQLException {
-		//con.close();
+	public void fechaConexao(Connection con) {
+		try {
+			con.close();
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+	}
 	}
 }

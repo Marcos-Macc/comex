@@ -14,6 +14,8 @@ public class MainAtualizacaoCategoria {
 		PreparedStatement psmt = c.prepareStatement("UPDATE comex.categoria SET"
 				+ " nome = 'LIVROS TÉCNICOS' where nome = 'LIVROS'");
 		psmt.execute();
+		psmt.close();
+		conF.fechaConexao(c);
 
 	}
 }

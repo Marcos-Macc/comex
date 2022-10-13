@@ -51,6 +51,28 @@ public class Categoria {
 		this.status = status;
 	}
 	
+	public Categoria(int id, String nome, StatusCategoria status) {
+
+		if (id < 1 ) {
+			throw new IllegalArgumentException("ID inválido. Deve ser Maior que 0.");
+		}
+		if (nome == null) {
+			throw new IllegalArgumentException("Nome da Categoria é obrigatório.");
+		}
+		if (nome.trim().length() <= 3 ) {
+			throw new IllegalArgumentException("Nome inválido. Deve ter mais que 3 caracteres.");
+		}
+		if (Character.isDigit(nome.charAt(0)) ) {
+			throw new IllegalArgumentException("Nome: "+nome+" não pode começar com um número.");
+		}
+		if (status==null ) {
+			throw new IllegalArgumentException("Status inválido. Deve ser StatusCategoria.ATIVA ou StatusCategoria.INATIVA.");
+		}
+		this.id = id;
+		this.nome = nome;
+		this.status = status;
+	}
+	
 	public String imprimirInformacoes() {
 		return "Categoria " + this.nome.trim() + " (" + this.id +
 				" - " + this.status+ ")";

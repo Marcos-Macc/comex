@@ -29,6 +29,8 @@ public class MainListagemCategoria {
 			}; 
 			categorias.add(cat);
 		}
+		rs.close();
+		smt.close();
 		conF.fechaConexao(c);
 		for (Categoria categoria : categorias) {
 			System.out.println(categoria.getId()+"-"+categoria.getNome()+" - "+categoria.getStatus());

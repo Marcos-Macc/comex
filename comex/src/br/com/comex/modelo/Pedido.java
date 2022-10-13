@@ -12,6 +12,10 @@ public class Pedido {
 	public int getId() {
 		return id;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Date getData() {
 		return data;
@@ -19,6 +23,14 @@ public class Pedido {
 
 	public Cliente getCliente() {
 		return cliente;
+	}
+	
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public Pedido(Date data, Cliente cliente) {
@@ -28,6 +40,12 @@ public class Pedido {
 		this.cliente = cliente;
 	}
 	
+	public Pedido(int id, Date data, Cliente cliente) {
+		this.id = id;
+		this.data = data;
+		this.cliente = cliente;
+	}
+
 	public String imprimirInformacoes() {
 		SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
 		return "Pedido nº: "+this.id+" feito dia "+f.format(this.data)+" por "+this.cliente.getNome()+".";

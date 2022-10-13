@@ -15,6 +15,8 @@ public class MainRemocaoCategoria {
 				+ "WHERE upper(STATUS) = 'INATIVA'");
 		
 		pstm.execute();
+		pstm.close();
+		conF.fechaConexao(c);
 
 	}
 

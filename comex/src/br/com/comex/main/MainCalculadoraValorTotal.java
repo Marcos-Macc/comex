@@ -31,9 +31,9 @@ public class MainCalculadoraValorTotal {
 		Categoria cat2 = new Categoria("MÓVEIS", StatusCategoria.INATIVA);
 		Categoria cat3 = new Categoria("LIVROS", StatusCategoria.ATIVA);
 
-		Produto produto1 = new Produto("Notebook Samsung", "", 3523.00, 1, cat1);
-		Produto produto2 = new ProdutoIsento("Clean Arquiteture", "", 102.90, 2, cat3);
-		Produto produto3 = new Produto("Monitor Dell 27", "", 1889.00, 3, cat1);
+		Produto produto1 = new Produto("Notebook Samsung", "", 3523.00, 1, cat1,"NAO_ISENTO");
+		Produto produto2 = new ProdutoIsento("Clean Arquiteture", "", 102.90, 2, cat3,"ISENTO");
+		Produto produto3 = new Produto("Monitor Dell 27", "", 1889.00, 3, cat1,"NAO_ISENTO");
 		
 
 		ItemPedido itemPedido1 = new ItemPedido(11, produto2, pedido3, 0, tipoDescontoPedido.QUANTIDADE);

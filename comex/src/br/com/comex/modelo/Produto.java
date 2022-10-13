@@ -6,7 +6,8 @@ public class Produto implements IValoresProduto {
 	private String descricao;
 	private double precoUnitario = 0.0;
 	private int quantidade;
-	private br.com.comex.modelo.Categoria categoria;
+	private Categoria categoria;
+	private String TIPO;
 	private static int totalProduto = 0;
 	 
 	public int getId() {
@@ -39,18 +40,23 @@ public class Produto implements IValoresProduto {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	public br.com.comex.modelo.Categoria getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
-	public void setCategoria(br.com.comex.modelo.Categoria categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+	
+	public String getTIPO() {
+		return TIPO;
 	}
 	
 	public Produto(String nome,
 	String descricao,
 	double precoUnitario,
 	int quantidade,
-	br.com.comex.modelo.Categoria categoria) {
+	br.com.comex.modelo.Categoria categoria,
+	String tipo) {
 		++totalProduto;
 		if (totalProduto<0) {
 			throw new IllegalArgumentException("ID deve ser maior que 0.");
@@ -79,8 +85,45 @@ public class Produto implements IValoresProduto {
 		this.precoUnitario = precoUnitario;
 		this.quantidade = quantidade;
 		this.categoria = categoria;
+		this.TIPO = tipo;
 		
 	}
+	public Produto(int id, String nome,
+			String descricao,
+			double precoUnitario,
+			int quantidade,
+			Categoria categoria,
+			String tipo) {
+				if (id<0) {
+					throw new IllegalArgumentException("ID deve ser maior que 0.");
+				}
+				if ((nome==null)) {
+					throw new IllegalArgumentException("Nome é obrigatório!");
+				}
+				if ((nome.trim().length()<=5)) {
+					throw new IllegalArgumentException("Nome deve ter mais de 5 caracteres.");
+				}
+				if (Character.isDigit(nome.charAt(0)) ) {
+					throw new IllegalArgumentException("Nome: "+nome+" não pode começar com um número.");
+				}
+				if (precoUnitario<=0) {
+					throw new IllegalArgumentException("Preço Unitário é obrigatório e deve ser maior que 0.");
+				}
+				if (quantidade<=0) {
+					throw new IllegalArgumentException("Quantidade é obrigatória e deve ser maior que 0.");
+				}
+				if (categoria==null) {
+					throw new IllegalArgumentException("Categoria é obrigatória.");
+				}
+				this.id = id;
+				this.nome = nome;
+				this.descricao = descricao;
+				this.precoUnitario = precoUnitario;
+				this.quantidade = quantidade;
+				this.categoria = categoria;
+				this.TIPO = tipo;
+				
+			}
 	
 	public double calculaValorTotalEstoque() {
 		return this.quantidade*this.precoUnitario;
@@ -104,4 +147,6 @@ public class Produto implements IValoresProduto {
 	public String toString() {
 		return imprimirInformacoes();
 	}
+	
+	
 }

@@ -87,3 +87,9 @@ Atualizado br.com.comex.modelo.ConnectionFactory para ter um pool de conexões.
 
 <h2>13/10/2022 - Remoção de Categorias Inativas</h2>
 Criado br.com.comex.main.MainRemocaoCategoria.
+
+<h2>13/10/2022 - DAOs para as entidades</h2>
+Criado br.com.comex.dao.CategoriasDAO, br.com.comex.dao.ClientesDAO, br.com.comex.dao.ItensPedidoDAO, br.com.comex.dao.PedidosDAO, br.com.comex.dao.ProdutosDAO.
+Atualizado classes br.com.comex.modelo: Produto, Pedido, ItemPedido, Cliente, Categoria para funcionarem com as novas implementações de conexão com banco de dados.
+Criado as relações com o banco de dados nas DAO. Atualizado modelos para funcionarem com os getters e setters necessários para a lógica das DAO.
+Atualizado outros projetos para as lógicas corretas das DAO.
