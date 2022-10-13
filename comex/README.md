@@ -84,3 +84,6 @@ Criado br.com.comex.main.MainAtualizacaoCategoria.
 
 <h2>11/10/2022 - Pool de conexões</h2>
 Atualizado br.com.comex.modelo.ConnectionFactory para ter um pool de conexões.
+
+<h2>13/10/2022 - Remoção de Categorias Inativas</h2>
+Criado br.com.comex.main.MainRemocaoCategoria.

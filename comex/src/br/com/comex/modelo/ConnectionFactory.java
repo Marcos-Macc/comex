@@ -21,8 +21,12 @@ public class ConnectionFactory {
 		this.dataSource = comboPooledDataSource;
 	}
 	
-	public Connection abreConexao() throws SQLException {
-		return this.dataSource.getConnection();
+	public Connection abreConexao() {
+		try {
+		  return this.dataSource.getConnection();
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 		//return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1522:xe", "SYSTEM", "admin");
 	}
 
