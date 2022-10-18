@@ -103,3 +103,8 @@ Serviço no ar com url http://localhost:8080/ComexWS?wsdl.
 
 <h2>18/10/2022 - Testando o ComexWS com o SOAP UI</h2>
 Adicionado getCategorias.xml com o XML do resultado de getCategorias no SOAPUI utilizando o url http://localhost:8080/ComexWS?wsdl. 
+
+<h2>18/10/2022 - Atualizando arquivo XML do projeto ComexWS com o SOAP UI</h2>
+Deletado getCategorias.xml com o XML do resultado de getCategorias no SOAPUI utilizando o url http://localhost:8080/ComexWS?wsdl.
+Adicionado ComexWS-soapui-project.xml com o XML do projeto.
+Alterado nome da função getCategoria() para listarCategorias no código-fonte br.com.comex.ws.ComexWS.
