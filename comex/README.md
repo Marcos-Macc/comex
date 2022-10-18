@@ -101,3 +101,5 @@ Criação dos código-fonte br.com.comex.ws.ComexWS e br.com.comex.main.MainCome
 ComexWS anotado com @WebService. MainComexWS utilizando classe Endpoit para publicar o ComexWS no endereço http://localhost:8080/ComexWS.
 Serviço no ar com url http://localhost:8080/ComexWS?wsdl.
 
+<h2>18/10/2022 - Testando o ComexWS com o SOAP UI</h2>
+Adicionado getCategorias.xml com o XML do resultado de getCategorias no SOAPUI utilizando o url http://localhost:8080/ComexWS?wsdl. 
