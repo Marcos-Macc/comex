@@ -93,3 +93,11 @@ Criado br.com.comex.dao.CategoriasDAO, br.com.comex.dao.ClientesDAO, br.com.come
 Atualizado classes br.com.comex.modelo: Produto, Pedido, ItemPedido, Cliente, Categoria para funcionarem com as novas implementações de conexão com banco de dados.
 Criado as relações com o banco de dados nas DAO. Atualizado modelos para funcionarem com os getters e setters necessários para a lógica das DAO.
 Atualizado outros projetos para as lógicas corretas das DAO.
+
+>>>BRX Semana 10 - Avançando nos Design Patterns e JAX-WS (17/10 - 21/10)
+
+<h2>18/10/2022 - Criação do ComexWS com listagem de categorias e Publicação do ComexWS</h2>
+Criação dos código-fonte br.com.comex.ws.ComexWS e br.com.comex.main.MainComexWS.
+ComexWS anotado com @WebService. MainComexWS utilizando classe Endpoit para publicar o ComexWS no endereço http://localhost:8080/ComexWS.
+Serviço no ar com url http://localhost:8080/ComexWS?wsdl.
+
