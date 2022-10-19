@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import br.com.comex.dao.CategoriasDAO;
@@ -22,11 +23,11 @@ public class ComexWS {
 		return cDAO.listaCategoria(0);
 	}
 	
-	public int adicionarCategoria() {
+	public int adicionarCategoria(@WebParam(name="categoria") String categoria) {
 		ConnectionFactory conf = new ConnectionFactory();
 		Connection c = conf.abreConexao();
 		CategoriasDAO cDAO = new CategoriasDAO(c);
-		Categoria cat = new Categoria("TESTANDO SOAP", StatusCategoria.ATIVA);
+		Categoria cat = new Categoria(categoria, StatusCategoria.ATIVA);
 		return cDAO.insereCategoria(cat);
 	}
 }

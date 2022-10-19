@@ -22,6 +22,7 @@ public class MainTestaCategoriasDAO {
 			System.out.println(c1.toString());
 		}
 		cat1.setNome("teste26");
+		catDAO.deletaCategoriasInativas();
 		catDAO.atualizaCategoria(cat1);
 		catDAO.deletaCategoria(cat1);
 		conF.fechaConexao(c);

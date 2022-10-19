@@ -52,6 +52,7 @@ public class CategoriasDAO {
 				pstm.execute();
 				try(ResultSet rs = pstm.getGeneratedKeys()){
 					while(rs.next()) {
+						cat.setId((int) rs.getLong(1));
 						resultado= (int) rs.getLong(1);
 					}
 				}
@@ -90,6 +91,21 @@ public class CategoriasDAO {
 			String sql = "DELETE from comex.Categoria where id = ?";
 			try(PreparedStatement pstm = c.prepareStatement(sql)){
 				pstm.setInt(1, cat.getId());
+				pstm.execute();
+				resultado = 1;
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return resultado;
+	}
+	
+	public int deletaCategoriasInativas() {
+		int resultado = 0;
+		try {
+			String sql = "DELETE FROM comex.categoria WHERE upper(STATUS) = 'INATIVA'";
+			try(PreparedStatement pstm = c.prepareStatement(sql)){
 				pstm.execute();
 				resultado = 1;
 			}
