@@ -100,6 +100,21 @@ public class CategoriasDAO {
 		return resultado;
 	}
 	
+	public int deletaCategoriasInativas() {
+		int resultado = 0;
+		try {
+			String sql = "DELETE FROM comex.categoria WHERE upper(STATUS) = 'INATIVA'";
+			try(PreparedStatement pstm = c.prepareStatement(sql)){
+				pstm.execute();
+				resultado = 1;
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return resultado;
+	}
+	
 	public void transformarResultSetEmCategoria(List<Categoria> cat, PreparedStatement pstm) throws SQLException {
 		try(ResultSet rs = pstm.getResultSet()){
 			while(rs.next()) {

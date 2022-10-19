@@ -23,6 +23,7 @@ public class MainTestaCategoriasDAO {
 		}
 		cat1.setNome("teste26");
 		catDAO.atualizaCategoria(cat1);
+		catDAO.deletaCategoriasInativas();
 		catDAO.deletaCategoria(cat1);
 		conF.fechaConexao(c);
 			

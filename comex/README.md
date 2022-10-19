@@ -93,3 +93,8 @@ Criado br.com.comex.dao.CategoriasDAO, br.com.comex.dao.ClientesDAO, br.com.come
 Atualizado classes br.com.comex.modelo: Produto, Pedido, ItemPedido, Cliente, Categoria para funcionarem com as novas implementações de conexão com banco de dados.
 Criado as relações com o banco de dados nas DAO. Atualizado modelos para funcionarem com os getters e setters necessários para a lógica das DAO.
 Atualizado outros projetos para as lógicas corretas das DAO.
+
+<h2>19/10/2022 - Atualização CategoriasDAO</h2>
+Atualizado br.com.comex.dao.CategriasDAO.java com função para deletar todas as Categorias Inativas.
+Atualizado br.com.comex.dao.main.MainTestaCategoriasDAO.java para utilizar a função para deletar todas as Categorias Inativas.
+
