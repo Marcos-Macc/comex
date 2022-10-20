@@ -22,17 +22,13 @@ public class ItemPedidoDAO {
 		this.c = c;
 	}
 	
-	public List<ItemPedido> listaItemPedido(int id){
+	public List<ItemPedido> listaTodos(){
 		try {
 			List<ItemPedido> ip = new ArrayList<ItemPedido>();
 			String sql = "SELECT ip.id idIP,ip.preco_unitario preco_unitarioIP, ip.quantidade quantidadeIP,"
-					+ "ip.PRODUTO_ID, ip.PEDIDO_ID, ip.DESCONTO DESCONTOIP, ip.TIPO_DESCONTO TIPO_DESCONTOIP "
-					+ "from comex.Item_Pedido ip ";
-			if(id>0) sql+= "WHERE ip.id =? ";
-			sql+=" order by ip.ID";
+					+ "ip.PRODUTO_ID, ip.PEDIDO_ID, ip.DESCONTO DESCONTOIP, ip.TIPO_DESCONTO TIPO_DESCONTOIP from comex.Item_Pedido ip order by ip.ID";
 			
 			try(PreparedStatement pstm = c.prepareStatement(sql)){
-				if(id>0) pstm.setInt(1, id);
 				pstm.execute();
 				transformarResultSetEmItemPedido(ip,pstm);
 			}
@@ -44,8 +40,35 @@ public class ItemPedidoDAO {
 		}
 	}
 	
-	public int insereItemPedido(ItemPedido ip) {
-		int resultado = 0;
+	public ItemPedido listaUm(Long id){
+		try {
+			ItemPedido ip = null;
+			String sql = "SELECT ip.id idIP,ip.preco_unitario preco_unitarioIP, ip.quantidade quantidadeIP,"
+					+ "ip.PRODUTO_ID, ip.PEDIDO_ID, ip.DESCONTO DESCONTOIP, ip.TIPO_DESCONTO TIPO_DESCONTOIP "
+					+ "from comex.Item_Pedido ip WHERE ip.id =? ";
+			
+			try(PreparedStatement pstm = c.prepareStatement(sql)){
+				pstm.setLong(1, id);
+				pstm.execute();
+				try(ResultSet rs = pstm.getResultSet()){
+					if(rs.next()) {
+						Produto pro = new ProdutosDAO(c).listaUm(rs.getLong("PRODUTO_ID"));
+						Pedido ped = new PedidosDAO(c).listaUm(rs.getLong("PEDIDO_ID"));
+						ItemPedido itp = new ItemPedido(rs.getLong("IDIP"), rs.getInt("quantidadeIP"),
+								pro,ped,rs.getDouble("descontoIP"),
+								tipoDescontoPedido.valueOf(rs.getString("TIPO_DESCONTOIP")));
+					}
+				}
+			}
+			return ip;
+			 
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void insereItemPedido(ItemPedido ip) {
 		try {
 			String[] colunaParaRetornar = { "id" };
 			String sql = "INSERT INTO comex.Item_Pedido(PRECO_UNITARIO,QUANTIDADE,"
@@ -54,19 +77,18 @@ public class ItemPedidoDAO {
 			try(PreparedStatement pstm = c.prepareStatement(sql,colunaParaRetornar)){
 				pstm.setDouble(1, ip.getPrecoUnitario());
 				pstm.setInt(2, ip.getQuantidade());
-				pstm.setInt(3, ip.getProduto().getId());
-				pstm.setInt(4, ip.getPedido().getId());
+				pstm.setLong(3, ip.getProduto().getId());
+				pstm.setLong(4, ip.getPedido().getId());
 				pstm.setDouble(5, ip.getDesconto());
 				pstm.setString(6, ip.getTipoDesconto().toString());
 				
 				pstm.execute();
 				try(ResultSet rs = pstm.getGeneratedKeys()){
-					while(rs.next()) {
-						resultado=rs.getInt(1);
+					if(rs.next()) {
+						ip.setId(rs.getLong(1));
 					}
 				}
 			}
-			return resultado;
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -83,11 +105,11 @@ public class ItemPedidoDAO {
 			try(PreparedStatement pstm = c.prepareStatement(sql)){
 				pstm.setDouble(1,ip.getPrecoUnitario());
 				pstm.setInt(2,ip.getQuantidade());
-				pstm.setInt(3,ip.getProduto().getId());
-				pstm.setInt(4,ip.getPedido().getId());
+				pstm.setLong(3,ip.getProduto().getId());
+				pstm.setLong(4,ip.getPedido().getId());
 				pstm.setDouble(5,ip.getDesconto());
 				pstm.setString(6,ip.getTipoDesconto().toString());
-				pstm.setInt(7,ip.getId());
+				pstm.setLong(7,ip.getId());
 				
 				pstm.execute();
 				resultado = 1;
@@ -105,7 +127,7 @@ public class ItemPedidoDAO {
 		try {
 			String sql = "DELETE from comex.Item_Pedido where id = ?";
 			try(PreparedStatement pstm = c.prepareStatement(sql)){
-				pstm.setInt(1, ip.getId());
+				pstm.setLong(1, ip.getId());
 				pstm.execute();
 				resultado = 1;
 			}
@@ -119,10 +141,10 @@ public class ItemPedidoDAO {
 	public void transformarResultSetEmItemPedido(List<ItemPedido> ip, PreparedStatement pstm) throws SQLException {
 		try(ResultSet rs = pstm.getResultSet()){
 			while(rs.next()) {
-				List<Produto> pro = new ProdutosDAO(c).listaProduto(rs.getInt("PRODUTO_ID"));
-				List<Pedido> ped = new PedidosDAO(c).listaPedido(rs.getInt("PEDIDO_ID"));
-				ItemPedido itp = new ItemPedido(rs.getInt("IDIP"), rs.getInt("quantidadeIP"),
-						pro.get(0),ped.get(0),rs.getDouble("descontoIP"),
+				Produto pro = new ProdutosDAO(c).listaUm(rs.getLong("PRODUTO_ID"));
+				Pedido ped = new PedidosDAO(c).listaUm(rs.getLong("PEDIDO_ID"));
+				ItemPedido itp = new ItemPedido(rs.getLong("IDIP"), rs.getInt("quantidadeIP"),
+						pro,ped,rs.getDouble("descontoIP"),
 						tipoDescontoPedido.valueOf(rs.getString("TIPO_DESCONTOIP")));
 				ip.add(itp);
 			}

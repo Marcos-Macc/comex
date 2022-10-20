@@ -108,3 +108,6 @@ Adicionado getCategorias.xml com o XML do resultado de getCategorias no SOAPUI u
 Deletado getCategorias.xml com o XML do resultado de getCategorias no SOAPUI utilizando o url http://localhost:8080/ComexWS?wsdl.
 Adicionado ComexWS-soapui-project.xml com o XML do projeto.
 Alterado nome da função getCategoria() para listarCategorias no código-fonte br.com.comex.ws.ComexWS.
+
+<h2>19/10/2022 - Realizado mesmas atualizações da semana9</h2>
+Atualizado todas as classes com as atualizações dos fontes da semana9.

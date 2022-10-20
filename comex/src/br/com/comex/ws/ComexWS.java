@@ -20,14 +20,15 @@ public class ComexWS {
 		ConnectionFactory conf = new ConnectionFactory();
 		Connection c = conf.abreConexao();
 		CategoriasDAO cDAO = new CategoriasDAO(c);
-		return cDAO.listaCategoria(0);
+		return cDAO.listaTodos();
 	}
 	
-	public int adicionarCategoria(@WebParam(name="categoria") String categoria) {
+	public Long adicionarCategoria(@WebParam(name="categoria") String categoria) {
 		ConnectionFactory conf = new ConnectionFactory();
 		Connection c = conf.abreConexao();
 		CategoriasDAO cDAO = new CategoriasDAO(c);
 		Categoria cat = new Categoria(categoria, StatusCategoria.ATIVA);
-		return cDAO.insereCategoria(cat);
+		cDAO.insereCategoria(cat);
+		return cat.getId();
 	}
 }

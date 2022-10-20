@@ -20,7 +20,7 @@ public class MainListagemCategoria {
 		ArrayList<Categoria> categorias = new ArrayList<Categoria>();
 		while(rs.next()) {
 			Categoria cat = new Categoria();
-			cat.setId(rs.getInt("id"));
+			cat.setId(rs.getLong("id"));
 			cat.setNome(rs.getString("nome").trim());
 			if(rs.getString("status").equals("ATIVA")) {
 				cat.setStatus(StatusCategoria.ATIVA);

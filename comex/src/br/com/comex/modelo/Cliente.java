@@ -1,7 +1,7 @@
 package br.com.comex.modelo;
 
 public class Cliente {
-	private int id;
+	private Long id;
 	private String nome;
 	private String cpf;
 	private String telefone;
@@ -13,7 +13,7 @@ public class Cliente {
 	private siglaEstado estado;
 	private static int totalCliente = 0;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	public String getNome() {
@@ -44,7 +44,7 @@ public class Cliente {
 		return estado;
 	}
 	
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public void setNome(String nome) {
@@ -130,7 +130,7 @@ public class Cliente {
 			throw new ComexException("Estado é campo obrigatório e deve conter exatamente 2 caracteres.");
 		}	
 		
-		this.id = totalCliente;
+		this.id = (long) totalCliente;
 		this.nome = nome.trim();
 		this.cpf = cpf.trim();
 		this.telefone = telefone.trim();
@@ -142,7 +142,7 @@ public class Cliente {
 		this.estado = estado;
 	}
 	
-	public Cliente(int id, String nome,
+	public Cliente(Long id, String nome,
 			String cpf,
 			String telefone,
 			String rua,

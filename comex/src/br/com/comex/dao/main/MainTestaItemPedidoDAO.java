@@ -19,8 +19,8 @@ public class MainTestaItemPedidoDAO {
 		ConnectionFactory conF = new ConnectionFactory();
 		Connection c = conF.abreConexao();
 		ItemPedidoDAO ipDAO = new ItemPedidoDAO(c);
-		List<Produto> pro = new ProdutosDAO(c).listaProduto(0);
-		List<Pedido> ped = new PedidosDAO(c).listaPedido(0);
+		List<Produto> pro = new ProdutosDAO(c).listaTodos();
+		List<Pedido> ped = new PedidosDAO(c).listaTodos();
 		
 		
 		
@@ -30,12 +30,12 @@ public class MainTestaItemPedidoDAO {
 		ItemPedido itemPedido3 = new ItemPedido(1, pro.get(0), ped.get(0), 0, tipoDescontoPedido.QUANTIDADE);
 		ItemPedido itemPedido4 = new ItemPedido(11, pro.get(1), ped.get(1), 0, tipoDescontoPedido.PROMOCAO);
 
-		itemPedido1.setId(ipDAO.insereItemPedido(itemPedido1));
-		itemPedido2.setId(ipDAO.insereItemPedido(itemPedido2));
-		itemPedido3.setId(ipDAO.insereItemPedido(itemPedido3));
-		itemPedido4.setId(ipDAO.insereItemPedido(itemPedido4));
+		ipDAO.insereItemPedido(itemPedido1);
+		ipDAO.insereItemPedido(itemPedido2);
+		ipDAO.insereItemPedido(itemPedido3);
+		ipDAO.insereItemPedido(itemPedido4);
 
-		List<ItemPedido> lcat = ipDAO.listaItemPedido(0);
+		List<ItemPedido> lcat = ipDAO.listaTodos();
 		for (ItemPedido c1 : lcat) {
 			System.out.println(c1.toString());
 		}

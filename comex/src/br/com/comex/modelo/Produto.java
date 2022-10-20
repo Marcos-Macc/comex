@@ -1,7 +1,7 @@
 package br.com.comex.modelo;
 
 public class Produto implements IValoresProduto {
-	private int id;
+	private Long id;
 	private String nome;
 	private String descricao;
 	private double precoUnitario = 0.0;
@@ -10,10 +10,10 @@ public class Produto implements IValoresProduto {
 	private String TIPO;
 	private static int totalProduto = 0;
 	 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNome() {
@@ -79,7 +79,7 @@ public class Produto implements IValoresProduto {
 		if (categoria==null) {
 			throw new IllegalArgumentException("Categoria é obrigatória.");
 		}
-		this.id = totalProduto;
+		this.id = (long) totalProduto;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.precoUnitario = precoUnitario;
@@ -88,7 +88,7 @@ public class Produto implements IValoresProduto {
 		this.TIPO = tipo;
 		
 	}
-	public Produto(int id, String nome,
+	public Produto(Long id, String nome,
 			String descricao,
 			double precoUnitario,
 			int quantidade,

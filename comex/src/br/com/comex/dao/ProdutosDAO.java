@@ -20,19 +20,43 @@ public class ProdutosDAO {
 		this.c = c;
 	}
 	
-	public List<Produto> listaProduto(int id){
+	public List<Produto> listaTodos(){
 		try {
 			List<Produto> p = new ArrayList<Produto>();
 			String sql = "SELECT p.id, p.nome nomeProd, p.descricao, p.preco_unitario, p.quantidade_estoque,"
 					+ "p.categoria_ID, c.id IDCAT, p.TIPO, c.nome nomeCat, c.status from comex.produto p "
-					+ "INNER JOIN comex.categoria c on c.id = p.categoria_ID ";
-			if(id>0) sql+= "WHERE p.id =? ";
-			sql+=" order by p.ID";
+					+ "INNER JOIN comex.categoria c on c.id = p.categoria_ID order by p.ID";
 			
 			try(PreparedStatement pstm = c.prepareStatement(sql)){
-				if(id>0) pstm.setInt(1, id);
 				pstm.execute();
 				transformarResultSetEmProduto(p,pstm);
+			}
+			return p;
+			
+		} catch (SQLException e){
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public Produto listaUm(Long id){
+		try {
+			Produto p = null;
+			String sql = "SELECT p.id, p.nome nomeProd, p.descricao, p.preco_unitario, p.quantidade_estoque,"
+					+ "p.categoria_ID, c.id IDCAT, p.TIPO, c.nome nomeCat, c.status from comex.produto p "
+					+ "INNER JOIN comex.categoria c on c.id = p.categoria_ID WHERE p.id =? ";
+			
+			try(PreparedStatement pstm = c.prepareStatement(sql)){
+				pstm.setLong(1, id);
+				pstm.execute();
+				try(ResultSet rs = pstm.getResultSet()){
+					if(rs.next()) {
+						Categoria cat = new Categoria(rs.getLong("IDCAT"), rs.getString("nomeCat"), StatusCategoria.valueOf(rs.getString("status")));
+						p = new Produto(rs.getLong("ID"), rs.getString("nomeProd"), 
+								rs.getString("descricao"), rs.getDouble("preco_unitario"), 
+								rs.getInt("quantidade_estoque"), 
+								cat, rs.getString("TIPO"));
+					}
+				}
 			}
 			return p;
 			
@@ -52,7 +76,7 @@ public class ProdutosDAO {
 				pstm.setString(2,p.getDescricao());
 				pstm.setDouble(3,p.getPrecoUnitario());
 				pstm.setInt(4,p.getQuantidade());
-				pstm.setInt(5,p.getCategoria().getId());
+				pstm.setLong(5,p.getCategoria().getId());
 				pstm.setString(6,p.getTIPO());
 				pstm.execute();
 				try(ResultSet rs = pstm.getGeneratedKeys()){
@@ -79,9 +103,9 @@ public class ProdutosDAO {
 				pstm.setString(2,p.getDescricao());
 				pstm.setDouble(3,p.getPrecoUnitario());
 				pstm.setInt(4,p.getQuantidade());
-				pstm.setInt(5,p.getCategoria().getId());
+				pstm.setLong(5,p.getCategoria().getId());
 				pstm.setString(6,p.getTIPO());
-				pstm.setInt(7,p.getId());
+				pstm.setLong(7,p.getId());
 				
 				pstm.execute();
 				resultado = 1;
@@ -99,7 +123,7 @@ public class ProdutosDAO {
 		try {
 			String sql = "DELETE from comex.produto where id = ?";
 			try(PreparedStatement pstm = c.prepareStatement(sql)){
-				pstm.setInt(1, p.getId());
+				pstm.setLong(1, p.getId());
 				pstm.execute();
 				resultado = 1;
 			}
@@ -113,8 +137,8 @@ public class ProdutosDAO {
 	public void transformarResultSetEmProduto(List<Produto> p, PreparedStatement pstm) throws SQLException {
 		try(ResultSet rs = pstm.getResultSet()){
 			while(rs.next()) {
-				Categoria cat = new Categoria(rs.getInt("IDCAT"), rs.getString("nomeCat"), StatusCategoria.valueOf(rs.getString("status")));
-				Produto pro = new Produto(rs.getInt("ID"), rs.getString("nomeProd"), 
+				Categoria cat = new Categoria(rs.getLong("IDCAT"), rs.getString("nomeCat"), StatusCategoria.valueOf(rs.getString("status")));
+				Produto pro = new Produto(rs.getLong("ID"), rs.getString("nomeProd"), 
 						rs.getString("descricao"), rs.getDouble("preco_unitario"), 
 						rs.getInt("quantidade_estoque"), 
 						cat, rs.getString("TIPO"));
