@@ -19,16 +19,13 @@ public class ClientesDAO {
 		this.c = c;
 	}
 	
-	public List<Cliente> listaCliente(int id){
+	public List<Cliente> listaTodos(){
 		try {
 			List<Cliente> cli = new ArrayList<Cliente>();
 			String sql = "SELECT id, nome, cpf, telefone, rua, numero, complemento,"
-					+ "bairro, cidade, uf from comex.cliente ";
-			if(id>0) sql+= "WHERE id =? "; 
-			sql+=" order by ID";
+					+ "bairro, cidade, uf from comex.cliente order by ID";
 
 			try(PreparedStatement pstm = c.prepareStatement(sql)){
-				if(id>0) pstm.setInt(1, id);
 				pstm.execute();
 				transformarResultSetEmCliente(cli,pstm);
 			}
@@ -39,8 +36,34 @@ public class ClientesDAO {
 		}
 	}
 	
-	public int insereCliente(Cliente cli) {
-		int resultado = 0;
+	public Cliente listaUm(Long id){
+		try {
+			Cliente cli = null;
+			String sql = "SELECT id, nome, cpf, telefone, rua, numero, complemento,"
+					+ "bairro, cidade, uf from comex.cliente WHERE id =? "; 
+
+			try(PreparedStatement pstm = c.prepareStatement(sql)){
+				pstm.setLong(1, id);
+				pstm.execute();
+				try(ResultSet rs = pstm.getResultSet()){
+					while(rs.next()) {
+						cli = new Cliente(rs.getLong("ID"), rs.getString("nome"), 
+								rs.getString("cpf"), rs.getString("telefone"), 
+								rs.getString("rua"), rs.getString("numero"), 
+								rs.getString("complemento"), rs.getString("bairro"),
+								rs.getString("cidade"), siglaEstado.valueOf(rs.getString("uf")));
+					}
+				}
+			}
+			return cli;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void insereCliente(Cliente cli) {
+
 		try {
 			String[] colunaParaRetornar = { "id" };
 			String sql = "INSERT INTO comex.CLIENTE(nome, cpf, telefone, rua, numero, complemento,"
@@ -57,12 +80,11 @@ public class ClientesDAO {
 				pstm.setString(9,cli.getEstado().toString());
 				pstm.execute();
 				try(ResultSet rs = pstm.getGeneratedKeys()){
-					while(rs.next()) {
-						resultado=rs.getInt(1);
+					if(rs.next()) {
+						cli.setId(rs.getLong(1));
 					}
 				}
 			}
-			return resultado;
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -85,7 +107,7 @@ public class ClientesDAO {
 				pstm.setString(7,cli.getBairro());
 				pstm.setString(8,cli.getCidade());
 				pstm.setString(9,cli.getEstado().toString());
-				pstm.setInt(10,cli.getId());
+				pstm.setLong(10,cli.getId());
 				
 				pstm.execute();
 				resultado = 1;
@@ -103,7 +125,7 @@ public class ClientesDAO {
 		try {
 			String sql = "DELETE from comex.cliente where id = ?";
 			try(PreparedStatement pstm = c.prepareStatement(sql)){
-				pstm.setInt(1, cli.getId());
+				pstm.setLong(1, cli.getId());
 				pstm.execute();
 				resultado = 1;
 			}
@@ -117,7 +139,7 @@ public class ClientesDAO {
 	public void transformarResultSetEmCliente(List<Cliente> p, PreparedStatement pstm) throws SQLException {
 		try(ResultSet rs = pstm.getResultSet()){
 			while(rs.next()) {
-				Cliente cli = new Cliente(rs.getInt("ID"), rs.getString("nome"), 
+				Cliente cli = new Cliente(rs.getLong("ID"), rs.getString("nome"), 
 						rs.getString("cpf"), rs.getString("telefone"), 
 						rs.getString("rua"), rs.getString("numero"), 
 						rs.getString("complemento"), rs.getString("bairro"),

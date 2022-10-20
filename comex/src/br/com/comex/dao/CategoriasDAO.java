@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.comex.modelo.Categoria;
-import br.com.comex.modelo.ConnectionFactory;
-import br.com.comex.modelo.Produto;
 import br.com.comex.modelo.StatusCategoria;
 
 public class CategoriasDAO {
@@ -20,17 +18,12 @@ public class CategoriasDAO {
 		this.c = c;
 	}
 	
-	public List<Categoria> listaCategoria(int id){
+	public List<Categoria> listaTodos(){
 		try {
 			List<Categoria> cat = new ArrayList<Categoria>();
-			String sql = "SELECT id, nome, status from comex.Categoria ";
-			
-			if(id>0) sql+= "WHERE id =? ";
-			
-			sql+= " order by ID";
+			String sql = "SELECT id, nome, status from comex.Categoria order by ID";
 			
 			try(PreparedStatement pstm = c.prepareStatement(sql)){
-				if(id>0) pstm.setInt(1, id);
 				pstm.execute();
 				transformarResultSetEmCategoria(cat,pstm);
 			}
@@ -41,8 +34,30 @@ public class CategoriasDAO {
 		}
 	}
 	
-	public int insereCategoria(Categoria cat) {
-		int resultado = 0;
+	public Categoria listaUm(Long id){
+		try {
+			Categoria cat = null;
+			String sql = "SELECT id, nome, status from comex.Categoria WHERE id =? ";
+			
+			try(PreparedStatement pstm = c.prepareStatement(sql)){
+				pstm.setLong(1, id);
+				pstm.execute();
+				try(ResultSet rs = pstm.getResultSet()){
+					if(rs.next()) {
+						cat = new Categoria(rs.getLong("ID"), rs.getString("nome"), 
+								StatusCategoria.valueOf(rs.getString("status")));
+					}
+				}
+			}
+			return cat;
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void insereCategoria(Categoria cat) {
+		Long resultado = null;
 		try {
 			String[] colunaParaRetornar = { "id" };
 			String sql = "INSERT INTO comex.Categoria(NOME,STATUS)VALUES(?,?)";
@@ -51,12 +66,11 @@ public class CategoriasDAO {
 				pstm.setString(2, cat.getStatus().getDescricao());
 				pstm.execute();
 				try(ResultSet rs = pstm.getGeneratedKeys()){
-					while(rs.next()) {
-						resultado= (int) rs.getLong(1);
+					if(rs.next()) {
+						cat.setId(rs.getLong(1));
 					}
 				}
 			}
-			return resultado;
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -71,7 +85,7 @@ public class CategoriasDAO {
 			try(PreparedStatement pstm = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
 				pstm.setString(1,cat.getNome());
 				pstm.setString(2,cat.getStatus().getDescricao());
-				pstm.setInt(3,cat.getId());
+				pstm.setLong(3,cat.getId());
 				
 				pstm.execute();
 				resultado = 1;
@@ -89,7 +103,7 @@ public class CategoriasDAO {
 		try {
 			String sql = "DELETE from comex.Categoria where id = ?";
 			try(PreparedStatement pstm = c.prepareStatement(sql)){
-				pstm.setInt(1, cat.getId());
+				pstm.setLong(1, cat.getId());
 				pstm.execute();
 				resultado = 1;
 			}
@@ -118,7 +132,7 @@ public class CategoriasDAO {
 	public void transformarResultSetEmCategoria(List<Categoria> cat, PreparedStatement pstm) throws SQLException {
 		try(ResultSet rs = pstm.getResultSet()){
 			while(rs.next()) {
-				Categoria ct = new Categoria(rs.getInt("ID"), rs.getString("nome"), 
+				Categoria ct = new Categoria(rs.getLong("ID"), rs.getString("nome"), 
 						StatusCategoria.valueOf(rs.getString("status")));
 				cat.add(ct);
 			}

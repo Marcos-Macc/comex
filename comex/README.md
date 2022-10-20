@@ -98,3 +98,6 @@ Atualizado outros projetos para as lógicas corretas das DAO.
 Atualizado br.com.comex.dao.CategriasDAO.java com função para deletar todas as Categorias Inativas.
 Atualizado br.com.comex.dao.main.MainTestaCategoriasDAO.java para utilizar a função para deletar todas as Categorias Inativas.
 
+<h2>19/10/2022 - Atualização Classes DAO para terem 2 métodos de retorno de lista.</h2>
+Atualizado projetos para que funcionem com o método listarTodos() quanto com o método listarUm(Long ID) dos DAO.
+Atualizado métodos de inserção para devolverem para as classes os IDs gerados pelas tabelas.

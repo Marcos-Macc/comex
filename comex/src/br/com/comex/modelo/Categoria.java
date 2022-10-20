@@ -1,15 +1,15 @@
 package br.com.comex.modelo;
 
 public class Categoria {
-	private int id;
+	private Long id;
 	private String nome;
 	private StatusCategoria status = StatusCategoria.ATIVA;
 	private static int totalCategoria = 0;
 	 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNome() {
@@ -46,12 +46,12 @@ public class Categoria {
 		if (status==null ) {
 			throw new IllegalArgumentException("Status inválido. Deve ser StatusCategoria.ATIVA ou StatusCategoria.INATIVA.");
 		}
-		this.id = totalCategoria;
+		this.id = (long) totalCategoria;
 		this.nome = nome;
 		this.status = status;
 	}
 	
-	public Categoria(int id, String nome, StatusCategoria status) {
+	public Categoria(Long id, String nome, StatusCategoria status) {
 
 		if (id < 1 ) {
 			throw new IllegalArgumentException("ID inválido. Deve ser Maior que 0.");

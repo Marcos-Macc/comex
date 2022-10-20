@@ -18,17 +18,17 @@ public class MainTestaProdutosDAO {
 		Connection c = conF.abreConexao();
 		ProdutosDAO pDAO = new ProdutosDAO(c);
 
-		List<Categoria> cat = new CategoriasDAO(c).listaCategoria(0);
+		List<Categoria> cat = new CategoriasDAO(c).listaTodos();
 
 		Produto p1 = new Produto("Notebook Samsung", "", 3523.00, 1, cat.get(0), "NAO_ISENTO");
 		Produto p2 = new ProdutoIsento("Clean Arquiteture", "", 102.90, 2, cat.get(1), "ISENTO");
 		Produto p3 = new Produto("Monitor Dell 27", "", 1889.00, 3, cat.get(1), "NAO_ISENTO");
 
-		p1.setId(pDAO.insereProduto(p1));
-		p2.setId(pDAO.insereProduto(p2));
-		p3.setId(pDAO.insereProduto(p3));
+		pDAO.insereProduto(p1);
+		pDAO.insereProduto(p2);
+		pDAO.insereProduto(p3);
 
-		List<Produto> lcat = pDAO.listaProduto(0);
+		List<Produto> lcat = pDAO.listaTodos();
 		for (Produto c1 : lcat) {
 			System.out.println(c1.toString());
 		}

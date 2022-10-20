@@ -22,11 +22,11 @@ public class MainTestaClientesDAO {
 		Cliente gabi = new Cliente("Gabriela Duarte", "123.123.123-81", "(11) 9 9999-9999", "Av Batatão", "777", "",
 				"Lima", "Assado", siglaEstado.PR);
 		
-		ana.setId(cDAO.insereCliente(ana));
-		eli.setId(cDAO.insereCliente(eli));
-		gabi.setId(cDAO.insereCliente(gabi));
+		cDAO.insereCliente(ana);
+		cDAO.insereCliente(eli);
+		cDAO.insereCliente(gabi);
 		
-		List<Cliente> lcat = cDAO.listaCliente(0);
+		List<Cliente> lcat = cDAO.listaTodos();
 		for (Cliente c1 : lcat) {
 			System.out.println(c1.toString());
 		}

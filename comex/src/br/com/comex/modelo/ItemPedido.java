@@ -1,7 +1,7 @@
 package br.com.comex.modelo;
 
 public class ItemPedido implements IValoresProduto {
-	private int id;
+	private Long id;
 	private double precoUnitario;
 	private int quantidade;
 	private Produto produto;
@@ -10,7 +10,7 @@ public class ItemPedido implements IValoresProduto {
 	private tipoDescontoPedido tipoDesconto;
 	private static int totalItemPedido = 0;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
@@ -38,7 +38,7 @@ public class ItemPedido implements IValoresProduto {
 		this.tipoDesconto = tipoDesconto;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -69,7 +69,7 @@ public class ItemPedido implements IValoresProduto {
 	public ItemPedido(int quantidade, Produto produto, Pedido pedido, double desconto,
 			tipoDescontoPedido tipoDesconto) {
 		++totalItemPedido;
-		this.id = totalItemPedido;
+		this.id = (long) totalItemPedido;
 		this.precoUnitario = produto.getPrecoUnitario();
 		this.quantidade = quantidade;
 		this.produto = produto;
@@ -86,7 +86,7 @@ public class ItemPedido implements IValoresProduto {
 			this.tipoDesconto = tipoDesconto;
 	}
 	
-	public ItemPedido(int id, int quantidade, Produto produto, Pedido pedido, double desconto,
+	public ItemPedido(Long id, int quantidade, Produto produto, Pedido pedido, double desconto,
 			tipoDescontoPedido tipoDesconto) {
 		this.id = id;
 		this.precoUnitario = produto.getPrecoUnitario();

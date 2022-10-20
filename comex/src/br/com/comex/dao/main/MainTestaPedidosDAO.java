@@ -17,17 +17,17 @@ public class MainTestaPedidosDAO {
 		ConnectionFactory conF = new ConnectionFactory();
 		Connection c = conF.abreConexao();
 		PedidosDAO pedDAO = new PedidosDAO(c);
-		List<Cliente> cli = new ClientesDAO(c).listaCliente(0);
+		List<Cliente> cli = new ClientesDAO(c).listaTodos();
 		
 		Pedido pedido1 = new Pedido(Date.valueOf(LocalDate.now()), cli.get(0));
 		Pedido pedido2 = new Pedido(Date.valueOf(LocalDate.now()), cli.get(0));
 		Pedido pedido3 = new Pedido(Date.valueOf(LocalDate.now()), cli.get(1));
 		
-		pedido1.setId(pedDAO.inserePedido(pedido1));
-		pedido2.setId(pedDAO.inserePedido(pedido2));
-		pedido3.setId(pedDAO.inserePedido(pedido3));
+		pedDAO.inserePedido(pedido1);
+		pedDAO.inserePedido(pedido2);
+		pedDAO.inserePedido(pedido3);
 
-		List<Pedido> lcat = pedDAO.listaPedido(0);
+		List<Pedido> lcat = pedDAO.listaTodos();
 		for (Pedido c1 : lcat) {
 			System.out.println(c1.toString());
 		}

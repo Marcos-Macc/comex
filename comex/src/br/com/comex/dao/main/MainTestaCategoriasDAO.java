@@ -16,8 +16,8 @@ public class MainTestaCategoriasDAO {
 		CategoriasDAO catDAO = new CategoriasDAO(c);
 		
 		Categoria cat1 = new Categoria("teste3",StatusCategoria.ATIVA);
-		cat1.setId(catDAO.insereCategoria(cat1));
-		List<Categoria> lcat = catDAO.listaCategoria(0);
+		catDAO.insereCategoria(cat1);
+		List<Categoria> lcat = catDAO.listaTodos();
 		for (Categoria c1 : lcat) {
 			System.out.println(c1.toString());
 		}

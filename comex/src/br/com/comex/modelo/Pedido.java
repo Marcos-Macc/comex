@@ -4,16 +4,16 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 public class Pedido {
-	private int id;
+	private Long id;
 	private Date data;
 	private Cliente cliente;
 	private static int totalPedido = 0;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -35,12 +35,12 @@ public class Pedido {
 
 	public Pedido(Date data, Cliente cliente) {
 		++totalPedido;
-		this.id = totalPedido;
+		this.id = (long) totalPedido;
 		this.data = data;
 		this.cliente = cliente;
 	}
 	
-	public Pedido(int id, Date data, Cliente cliente) {
+	public Pedido(Long id, Date data, Cliente cliente) {
 		this.id = id;
 		this.data = data;
 		this.cliente = cliente;
