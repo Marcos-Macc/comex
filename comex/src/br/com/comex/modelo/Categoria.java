@@ -1,8 +1,18 @@
 package br.com.comex.modelo;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement
 public class Categoria {
 	private Long id;
+	
+	@XmlElement(required = true)
 	private String nome;
+	
 	private StatusCategoria status = StatusCategoria.ATIVA;
 	private static int totalCategoria = 0;
 	 

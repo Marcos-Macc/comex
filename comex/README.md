@@ -111,3 +111,6 @@ Alterado nome da função getCategoria() para listarCategorias no código-fonte 
 
 <h2>19/10/2022 - Realizado mesmas atualizações da semana9</h2>
 Atualizado todas as classes com as atualizações dos fontes da semana9.
+
+<h2>21/10/2022 - Operação listarClientes no ComexWS</h2>
+Adicionado método listarClientes no código-fonte br.com.comex.ws.ComexWS.

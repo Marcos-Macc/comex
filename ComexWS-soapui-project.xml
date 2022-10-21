@@ -7,30 +7,49 @@
       <xsd:import namespace="http://ws.comex.com.br/" schemaLocation="http://localhost:8080/ComexWS?xsd=1"/>
     </xsd:schema>
   </types>
-  <message name="adicionarCategoria">
-    <part name="parameters" element="tns:adicionarCategoria"/>
-  </message>
-  <message name="adicionarCategoriaResponse">
-    <part name="parameters" element="tns:adicionarCategoriaResponse"/>
-  </message>
   <message name="listarCategorias">
     <part name="parameters" element="tns:listarCategorias"/>
   </message>
   <message name="listarCategoriasResponse">
     <part name="parameters" element="tns:listarCategoriasResponse"/>
   </message>
+  <message name="adicionarCategoria">
+    <part name="parameters" element="tns:adicionarCategoria"/>
+  </message>
+  <message name="adicionarCategoriaResponse">
+    <part name="parameters" element="tns:adicionarCategoriaResponse"/>
+  </message>
+  <message name="listarClientes">
+    <part name="parameters" element="tns:listarClientes"/>
+  </message>
+  <message name="listarClientesResponse">
+    <part name="parameters" element="tns:listarClientesResponse"/>
+  </message>
   <portType name="ComexWS">
-    <operation name="adicionarCategoria">
-      <input wsam:Action="http://ws.comex.com.br/ComexWS/adicionarCategoriaRequest" message="tns:adicionarCategoria"/>
-      <output wsam:Action="http://ws.comex.com.br/ComexWS/adicionarCategoriaResponse" message="tns:adicionarCategoriaResponse"/>
-    </operation>
     <operation name="listarCategorias">
       <input wsam:Action="http://ws.comex.com.br/ComexWS/listarCategoriasRequest" message="tns:listarCategorias"/>
       <output wsam:Action="http://ws.comex.com.br/ComexWS/listarCategoriasResponse" message="tns:listarCategoriasResponse"/>
     </operation>
+    <operation name="adicionarCategoria">
+      <input wsam:Action="http://ws.comex.com.br/ComexWS/adicionarCategoriaRequest" message="tns:adicionarCategoria"/>
+      <output wsam:Action="http://ws.comex.com.br/ComexWS/adicionarCategoriaResponse" message="tns:adicionarCategoriaResponse"/>
+    </operation>
+    <operation name="listarClientes">
+      <input wsam:Action="http://ws.comex.com.br/ComexWS/listarClientesRequest" message="tns:listarClientes"/>
+      <output wsam:Action="http://ws.comex.com.br/ComexWS/listarClientesResponse" message="tns:listarClientesResponse"/>
+    </operation>
   </portType>
   <binding name="ComexWSPortBinding" type="tns:ComexWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="listarCategorias">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
     <operation name="adicionarCategoria">
       <soap:operation soapAction=""/>
       <input>
@@ -40,7 +59,7 @@
         <soap:body use="literal"/>
       </output>
     </operation>
-    <operation name="listarCategorias">
+    <operation name="listarClientes">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>
@@ -59,16 +78,19 @@
 <xs:schema version="1.0" targetNamespace="http://ws.comex.com.br/" xmlns:tns="http://ws.comex.com.br/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="adicionarCategoria" type="tns:adicionarCategoria"/>
   <xs:element name="adicionarCategoriaResponse" type="tns:adicionarCategoriaResponse"/>
+  <xs:element name="categoria" type="tns:categoria"/>
   <xs:element name="listarCategorias" type="tns:listarCategorias"/>
   <xs:element name="listarCategoriasResponse" type="tns:listarCategoriasResponse"/>
+  <xs:element name="listarClientes" type="tns:listarClientes"/>
+  <xs:element name="listarClientesResponse" type="tns:listarClientesResponse"/>
   <xs:complexType name="adicionarCategoria">
     <xs:sequence>
-      <xs:element name="categoria" type="xs:string" minOccurs="0"/>
+      <xs:element name="categoria" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="adicionarCategoriaResponse">
     <xs:sequence>
-      <xs:element name="return" type="xs:int"/>
+      <xs:element name="return" type="xs:long" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarCategorias">
@@ -81,9 +103,31 @@
   </xs:complexType>
   <xs:complexType name="categoria">
     <xs:sequence>
-      <xs:element name="id" type="xs:int"/>
-      <xs:element name="nome" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="nome" type="xs:string"/>
       <xs:element name="status" type="tns:statusCategoria" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarClientes">
+    <xs:sequence/>
+  </xs:complexType>
+  <xs:complexType name="listarClientesResponse">
+    <xs:sequence>
+      <xs:element name="Cliente" type="tns:cliente" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cliente">
+    <xs:sequence>
+      <xs:element name="bairro" type="xs:string" minOccurs="0"/>
+      <xs:element name="cidade" type="xs:string" minOccurs="0"/>
+      <xs:element name="complemento" type="xs:string" minOccurs="0"/>
+      <xs:element name="cpf" type="xs:string" minOccurs="0"/>
+      <xs:element name="estado" type="tns:siglaEstado" minOccurs="0"/>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="nome" type="xs:string" minOccurs="0"/>
+      <xs:element name="numero" type="xs:string" minOccurs="0"/>
+      <xs:element name="rua" type="xs:string" minOccurs="0"/>
+      <xs:element name="telefone" type="xs:string" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="statusCategoria">
@@ -92,12 +136,42 @@
       <xs:enumeration value="INATIVA"/>
     </xs:restriction>
   </xs:simpleType>
-</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ComexWS</con:endpoint></con:endpoints><con:operation id="99fa9126-adf7-46c0-8c47-4660f0a879ef" isOneWay="false" action="" name="adicionarCategoria" bindingOperationName="adicionarCategoria" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bddfeb9f-5fbf-4919-8980-e7ba67c66977" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ComexWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.comex.com.br/">\r
+  <xs:simpleType name="siglaEstado">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AC"/>
+      <xs:enumeration value="AL"/>
+      <xs:enumeration value="AP"/>
+      <xs:enumeration value="AM"/>
+      <xs:enumeration value="BA"/>
+      <xs:enumeration value="CE"/>
+      <xs:enumeration value="DF"/>
+      <xs:enumeration value="ES"/>
+      <xs:enumeration value="GO"/>
+      <xs:enumeration value="MA"/>
+      <xs:enumeration value="MT"/>
+      <xs:enumeration value="MS"/>
+      <xs:enumeration value="MG"/>
+      <xs:enumeration value="PA"/>
+      <xs:enumeration value="PB"/>
+      <xs:enumeration value="PR"/>
+      <xs:enumeration value="PE"/>
+      <xs:enumeration value="PI"/>
+      <xs:enumeration value="RJ"/>
+      <xs:enumeration value="RN"/>
+      <xs:enumeration value="RS"/>
+      <xs:enumeration value="RO"/>
+      <xs:enumeration value="RR"/>
+      <xs:enumeration value="SC"/>
+      <xs:enumeration value="SP"/>
+      <xs:enumeration value="SE"/>
+      <xs:enumeration value="TO"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ComexWS</con:endpoint></con:endpoints><con:operation id="99fa9126-adf7-46c0-8c47-4660f0a879ef" isOneWay="false" action="" name="adicionarCategoria" bindingOperationName="adicionarCategoria" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f6cd087b-29d8-4008-8b81-52e083951330" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ComexWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.comex.com.br/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <ws:adicionarCategoria>\r
-         <!--Optional:-->\r
-         <categoria>Nova Categoria</categoria>\r
+         <categoria>?</categoria>\r
       </ws:adicionarCategoria>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.comex.com.br/ComexWS/adicionarCategoriaRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="2c7db8b7-4b71-43c1-b63c-4a86d5c0f634" isOneWay="false" action="" name="listarCategorias" bindingOperationName="listarCategorias" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c0f435d8-cf7c-4817-9971-b481ce28f50f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ComexWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.comex.com.br/">\r
@@ -105,4 +179,9 @@
    <soapenv:Body>\r
       <ws:listarCategorias/>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.comex.com.br/ComexWS/listarCategoriasRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.comex.com.br/ComexWS/listarCategoriasRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="832e1574-ea58-45f8-8fb1-8797b0eb6a62" isOneWay="false" action="" name="listarClientes" bindingOperationName="listarClientes" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="07267f22-8f34-47e1-a56e-3a385720fc2b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ComexWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.comex.com.br/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:listarClientes/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.comex.com.br/ComexWS/listarClientesRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
