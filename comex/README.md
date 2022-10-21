@@ -117,3 +117,6 @@ Adicionado método listarClientes no código-fonte br.com.comex.ws.ComexWS.
 
 <h2>21/10/2022 - Operação de adicionarCliente no ComexWS</h2>
 Adicionado método adicionarCliente no código-fonte br.com.comex.ws.ComexWS.
+
+<h2>21/10/2022 - Operação de listarProdutos no ComexWS</h2>
+Adicionado método listarProdutos no código-fonte br.com.comex.ws.ComexWS.

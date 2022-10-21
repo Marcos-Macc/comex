@@ -16,9 +16,11 @@ import javax.xml.bind.annotation.XmlElement;
 
 import br.com.comex.dao.CategoriasDAO;
 import br.com.comex.dao.ClientesDAO;
+import br.com.comex.dao.ProdutosDAO;
 import br.com.comex.modelo.Categoria;
 import br.com.comex.modelo.Cliente;
 import br.com.comex.modelo.ConnectionFactory;
+import br.com.comex.modelo.Produto;
 import br.com.comex.modelo.StatusCategoria;
 import br.com.comex.modelo.siglaEstado;
 
@@ -83,5 +85,16 @@ public class ComexWS {
 		}
 		conf.fechaConexao(con);
 		return id;
+	}
+	
+	@WebResult(name = "Produto")
+	public List<Produto> listarProdutos(){
+		List<Produto> pro = new ArrayList<Produto>();
+		ConnectionFactory conf = new ConnectionFactory();
+		Connection c = conf.abreConexao();
+		ProdutosDAO proDAO = new ProdutosDAO(c);
+		pro = proDAO.listaTodos();
+		conf.fechaConexao(c);
+		return pro;
 	}
 }
