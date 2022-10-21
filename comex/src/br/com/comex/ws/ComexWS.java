@@ -20,6 +20,7 @@ import br.com.comex.modelo.Categoria;
 import br.com.comex.modelo.Cliente;
 import br.com.comex.modelo.ConnectionFactory;
 import br.com.comex.modelo.StatusCategoria;
+import br.com.comex.modelo.siglaEstado;
 
 @WebService
 @SOAPBinding(style = Style.DOCUMENT, parameterStyle = ParameterStyle.WRAPPED, use = Use.LITERAL)
@@ -57,5 +58,30 @@ public class ComexWS {
 		cli = cliDAO.listaTodos();
 		conf.fechaConexao(c);
 		return cli;
+	}
+	
+
+	public Long adicionarCliente(@WebParam(name="cliente") Cliente c) {
+		Long id = new Long(0);
+		ConnectionFactory conf = new ConnectionFactory();
+		Connection con = conf.abreConexao();
+		ClientesDAO cDAO = new ClientesDAO(con);
+		Cliente cli = null;
+		try {
+			if (c.getId()==null|| c.getId()==0){
+				cli = new Cliente(c.getNome(), c.getCpf(), c.getTelefone(), c.getRua(), 
+					c.getNumero(), c.getComplemento(), c.getBairro(), c.getCidade(), siglaEstado.PR);
+			}
+			else {
+				cli = new Cliente(c.getId(), c.getNome(), c.getCpf(), c.getTelefone(), c.getRua(), 
+					c.getNumero(), c.getComplemento(), c.getBairro(), c.getCidade(), siglaEstado.valueOf(c.getEstado().name()));
+			}
+			cDAO.insereCliente(cli);
+			id = cli.getId();
+		} catch(Exception e) {
+			throw e;
+		}
+		conf.fechaConexao(con);
+		return id;
 	}
 }

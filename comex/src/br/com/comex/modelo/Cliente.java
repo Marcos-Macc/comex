@@ -1,15 +1,30 @@
 package br.com.comex.modelo;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement
 public class Cliente {
 	private Long id;
+	@XmlElement(required = true)
 	private String nome;
+	@XmlElement(required = true)
 	private String cpf;
+	@XmlElement(required = true)
 	private String telefone;
+	@XmlElement(required = true)
 	private String rua;
+	@XmlElement(required = true)
 	private String numero;
 	private String complemento;
+	@XmlElement(required = true)
 	private String bairro;
+	@XmlElement(required = true)
 	private String cidade;
+	@XmlElement(required = true)
 	private siglaEstado estado;
 	private static int totalCliente = 0;
 	
@@ -73,6 +88,10 @@ public class Cliente {
 	}
 	public void setEstado(siglaEstado estado) {
 		this.estado = estado;
+	}
+	
+	public Cliente() {
+		
 	}
 	
 	public Cliente(String nome,
