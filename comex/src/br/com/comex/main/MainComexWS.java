@@ -1,11 +1,7 @@
 package br.com.comex.main;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.xml.ws.Endpoint;
 
-import br.com.comex.modelo.Categoria;
 import br.com.comex.ws.ComexWS;
 
 public class MainComexWS {
