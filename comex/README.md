@@ -120,3 +120,8 @@ Adicionado método adicionarCliente no código-fonte br.com.comex.ws.ComexWS.
 
 <h2>21/10/2022 - Operação de listarProdutos no ComexWS</h2>
 Adicionado método listarProdutos no código-fonte br.com.comex.ws.ComexWS.
+
+>>>BRX Semana 11 - Docker e Jenkins (17/10 - 21/10)
+
+<h2>28/10/2022 - Executar container com Jenkins</h2>
+Criado e configurado tarefa no Jenkins para execução.
